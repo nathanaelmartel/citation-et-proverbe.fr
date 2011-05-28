@@ -1,0 +1,41 @@
+Citation:
+  connection: doctrine
+  tableName: citation
+  actAs:
+    Sluggable:
+      unique: true
+      fields: [author]
+      canUpdate: true
+    Timestampable:
+  columns:
+    quote: {type: string()}
+    author: {type: string(255)}
+    source: {type: string(255)}
+    website: {type: string(255)}
+    is_active: {type: int}
+    last_published_at: {type: datetime}
+    author_last_published_at: {type: datetime}
+
+Link:
+  connection: doctrine
+  tableName: link
+  actAs:
+    Timestampable:
+  columns:
+    url: {type: string(255)}
+    website: {type: string(255)}
+    statut: {type: int}
+
+Author:
+  connection: doctrine
+  tableName: author
+  actAs:
+    Sluggable:
+      unique: true
+      fields: [author]
+    Timestampable:
+  columns:
+    author: {type: string(255)}
+    twitter_account: {type: string(255)}
+    twitter_keys: {type: string(255)}
+    is_active: {type: int}
