@@ -1,0 +1,23 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Author
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          author
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list: 
+          display: [=author, count_citations, slug, twitter_account, is_active]
+          sort: [author, asc]
+      filter:  ~
+      form:    ~
+      edit:    ~
+      new:     ~

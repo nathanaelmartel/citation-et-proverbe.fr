@@ -1,0 +1,53 @@
+author:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Author
+    module:               author
+    prefix_path:          /author
+    column:               id
+    with_wildcard_routes: true
+
+
+
+link:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Link
+    module:               link
+    prefix_path:          /link
+    column:               id
+    with_wildcard_routes: true
+
+citation:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Citation
+    module:               citation
+    prefix_path:          /citation
+    column:               id
+    with_wildcard_routes: true
+
+
+# default rules
+homepage:
+  url:   /
+  param: { module: default, action: index }
+
+# generic rules
+# please, remove them by adding more specific rules
+twitter_callback:
+  url:   /callback
+  param: { module: default, action: callback }
+default_twitter:
+  url:   /twitter/callback
+  param: { module: default, action: twitter }
+access:
+  url:   /access/
+  param: { action: index }
+  
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

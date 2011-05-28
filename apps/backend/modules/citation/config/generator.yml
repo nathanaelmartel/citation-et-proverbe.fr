@@ -1,0 +1,24 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Citation
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          citation
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+          display: [=quote, author, source, slug, is_active]
+          sort: [author, asc]
+      filter:
+          display: [quote, author, source, website, is_active]
+      form:    ~
+      edit:    ~
+      new:     ~
