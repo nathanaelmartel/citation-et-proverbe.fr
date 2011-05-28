@@ -1,0 +1,73 @@
+
+
+var s=document.createElement('script');
+s.setAttribute('src','http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js');
+document.getElementsByTagName('body')[0].appendChild(s);
+
+************************************************************************************
+http://www.bellescitations.com/themes/Absence.htm 
+
+FAILED : PAS DE SHEMA DIRECTEUR
+
+$(".Style1") => auteurs
+jQuery(".Style1").each(function() {this.style.border = "1px solid red"})
+$(".Style1").parent() => citations
+jQuery(".Style1").parent().each(function() {this.style.border = "1px solid blue"})
+
+
+************************************************************************************
+http://www.dicocitations.com/
+
+citation : 
+$(".citationContenu font:first") => citations
+jQuery(".citationContenu").find("font:first").each(function() {this.style.border = "1px solid red"})
+
+auteur : avec "Citations de "
+jQuery(".citationContenu").find("font:last a:first").each(function() {this.style.border = "1px solid green"})
+
+source : 
+jQuery(".citationContenu").children("a").each(function() {this.style.border = "1px solid blue"})
+
+************************************************************************************
+http://www.evene.fr/citations/theme/sexe.php
+
+$(".bloc_content.trait_liste table tr:first td:first") => citations
+$(".bloc_content.trait_liste table tr:first").parent().second_fils().find("td:first") => auteur
+$(".bloc_content.trait_liste table tr:laste em") => spource
+
+
+
+jQuery(".bloc_content.trait_liste table tr td").each(function() {this.style.border = "1px solid green"})
+
+jQuery(".bloc_content.trait_liste table").each(function() {this.find("td:first").this.style.border = "1px solid green"})
+
+jQuery(".bloc_content.trait_liste table").find("td:first").each(function() {this.style.border = "1px solid green"})
+
+
+citations : 
+jQuery(".bloc_content.trait_liste table").find("td:first").each(function() {this.style.border = "1px solid red"})
+
+auteur : 
+jQuery(".bloc_content.trait_liste table").find("tr:nth-child(2) td:first a").each(function() {this.style.border = "1px solid blue"})
+
+source : 
+jQuery(".bloc_content.trait_liste table").find("tr:nth-child(3) td:first em").each(function() {this.style.border = "1px solid green"})
+
+************************************************************************************
+http://www.evene.fr/citations/mot.php?mot=sexuelles
+
+txtC40 B14
+bloc citation : jQuery("table.trait_liste").each(function() {this.style.border = "1px solid red"})
+
+citations :
+jQuery("table.trait_liste").find("span.txtC40.B14").each(function() {this.style.border = "1px solid green"})
+
+auteur :
+jQuery("table.trait_liste").find("a.B14.txtC30").each(function() {this.style.border = "1px solid blue"})
+
+source :
+jQuery("table.trait_liste").find("span.N12.txtNr").each(function() {this.style.border = "1px solid red"})
+
+
+
+
