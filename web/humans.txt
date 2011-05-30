@@ -1,0 +1,18 @@
+/* TEAM */
+	developer Frontend/Backend: Nathanaël Martel
+	Twitter: @simplementNat
+	Site : http://nat.fam-martel.eu/
+	Contact: citation [at] fam-martel.eu
+	From: Nice, France
+	
+	Marketing: Sebastien Cay
+	Twitter: @simplementNat
+	Contact: cay.sebastien [at] gmail.com
+	From: Nice, France
+
+
+/* SITE */
+	Language: Français
+	Doctype: HTML5
+	Components: symfony, CSS3
+	IDE: Aptana Studio, Eclipse

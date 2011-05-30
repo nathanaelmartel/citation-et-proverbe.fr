@@ -11,6 +11,7 @@
     <?php include_javascripts() ?>
     <link rel="alternate" type="application/rss+xml" title="flux" href="/feed" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="author" href="/humans.txt" />
   </head>
   <body>
     <?php include_partial('global/nav')?>
