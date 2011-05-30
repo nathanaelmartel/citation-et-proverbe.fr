@@ -33,16 +33,11 @@ class citationActions extends sfActions
     $citations = Doctrine::getTable('Citation')
       ->createQuery('a')
       ->where('is_active = ?', 1)
-      ->limit(1)
+      ->limit(5)
       ->orderBy('last_published_at desc')
       ->execute();
     
-    $citation = $citations[0];
-    
-    if($citation)
-      $this->redirect('@single_citation?slug='.$citation->getSlug());
-    else 
-      $this->redirect('@homepage');
+    $this->citations = $citations;
   }
   
   public function executeShow(sfWebRequest $request)
@@ -87,7 +82,7 @@ class citationActions extends sfActions
       ->execute();
       
     
-    $feed = new sfAtom1Feed();
+    $feed = new sfRss201Feed();
 
 	  $feed->setTitle('Citations francophones');
 	  $feed->setLink('http://www.citation-et-proverbe.fr/');
@@ -101,13 +96,25 @@ class citationActions extends sfActions
        $item->setTitle($citation->quote);
       else
        $item->setTitle($citation->author);
-	    $item->setLink('http://www.citation-et-proverbe.fr/'.$citation->slug);
+	    $item->setLink('http://www.citation-et-proverbe.fr/'.$citation->slug.'/?utm_source=feed&amp;utm_medium=feed&amp;utm_campaign=feed');
 	    $item->setAuthorName($citation->author);
 	    $item->setAuthorEmail('citation@fam-martel.eu');
 	    $item->setPubdate(strtotime($citation->getLastPublishedAt()));
-	    $item->setUniqueId('http://www.citation-et-proverbe.fr/'.$citation->slug);
-	    $item->setDescription($citation->quote);
+	    $item->setUniqueId('http://www.citation-et-proverbe.fr/'.$citation->slug.'/');
 	
+	    $description = '<p>'.$citation->quote;
+	    if ($citation->getAuthor())
+	    {
+		    if ($citation->getAuthorSlug()) 
+		    	$description .= ' <a href="http://www.citation-et-proverbe.fr/auteur/'.$citation->getAuthorSlug().'?utm_source=feed&utm_medium=feed&utm_campaign=feed" >'.$citation->author.'</a></p>' ;
+		   	else 
+		    	$description .=  $citation->author.'</p>' ;
+	    } else {
+		    	$description .= '</p>' ;
+	    }
+	    $description .= '<p>Retrouvez plus de citations sur <a href="http://www.citation-et-proverbe.fr/?utm_source=feed&utm_medium=feed&utm_campaign=feed">www.citation-et-proverbe.fr</a></p>';
+
+	    $item->setDescription($description);
 	    $feed->addItem($item);
 	  }
 	

@@ -15,6 +15,7 @@
   <body>
     <?php include_partial('global/nav')?>
     <?php echo $sf_content ?>
+    <?php include_partial('global/footer')?>
     <?php include_partial('global/piwik')?>
   </body>
 </html>

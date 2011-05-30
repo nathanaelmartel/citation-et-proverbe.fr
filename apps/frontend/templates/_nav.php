@@ -1,7 +1,10 @@
 
+		<div id="site-name" >
+			<a href="<?php echo url_for('@homepage')?>" title="Dernières Citations" >Citations</a>
+		</div>
+
     <nav>
-      <a href="<?php echo url_for('@homepage')?>">dernière</a>
-      <a href="<?php echo url_for('@random')?>">une citation aléatoire</a>
-      <a href="https://twitter.com/citation_fr">twitter</a>
-      <a href="<?php echo url_for('@feed')?>">flux</a>
+      <a href="<?php echo url_for('@homepage')?>">Dernières Citations</a>
+      <a href="<?php echo url_for('@random')?>">Une Citation Aléatoire</a>
+      <a href="https://twitter.com/citation_fr" target="_blank" >Suivez nous sur Twitter</a>
     </nav>
