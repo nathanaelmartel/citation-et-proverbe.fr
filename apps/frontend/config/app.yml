@@ -2,5 +2,12 @@
 # http://www.symfony-project.org/reference/1_4/en/11-App
 
 # default values
-#all:
+all:
+  Tools:
+    cookie_name: citation-et-proverbe
 
+  Contact:
+    email_subject: '[citation-et-proverbe] Formulaire de contact'
+    email_from: contact@citation-et-proverbe.fr
+    email_to: contact@citation-et-proverbe.fr
+    email_bcc: []

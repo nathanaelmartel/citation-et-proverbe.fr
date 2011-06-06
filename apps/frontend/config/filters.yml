@@ -6,5 +6,7 @@ security:  ~
 
 # insert your own filters here
 
+tracking:
+  class: trackingFilter
 cache:     ~
 execution: ~

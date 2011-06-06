@@ -1,5 +1,4 @@
 
-    <footer><!-- 
-      <a href="">Contact</a>
-       -->
+    <footer> 
+      <a href="<?php echo url_for('@contact')?>">Contact</a>
     </footer>

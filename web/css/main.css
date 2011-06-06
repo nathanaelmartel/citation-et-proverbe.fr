@@ -180,3 +180,20 @@ footer a:hover, footer a:active, footer a:focus {
 	text-decoration: underline;
 }
 
+
+.form {
+	margin: 0 auto;
+	-moz-border-radius : 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+	-moz-box-shadow : #B3BEC7 0 5px 20px ;
+  -webkit-box-shadow: #B3BEC7 0 5px 20px ;
+  box-shadow: #B3BEC7 0 5px 20px ;
+	background-color : #FFFFFF;
+	padding : 25px;
+	width : 600px;
+	margin : 75px auto 100px;
+}
+
+
+
