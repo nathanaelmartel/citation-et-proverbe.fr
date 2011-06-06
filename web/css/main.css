@@ -195,5 +195,7 @@ footer a:hover, footer a:active, footer a:focus {
 	margin : 75px auto 100px;
 }
 
-
+#confirmation {
+	text-align: center;
+}
 

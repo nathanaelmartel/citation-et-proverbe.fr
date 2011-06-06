@@ -4,7 +4,7 @@
 prod:
   .settings:
     no_script_name:         true
-    logging_enabled:        false
+    logging_enabled:        true
 
 dev:
   .settings:
@@ -37,4 +37,3 @@ all:
     standard_helpers: [Partial, Text]
     
     enabled_modules: 
-      - sfMelody
