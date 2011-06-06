@@ -1,6 +1,6 @@
 <?php if ($sf_user->hasFlash('confirmation')): ?>
     <div id="confirmation">
-        <?php echo __($sf_user->getFlash('confirmation')) ?>
+        <?php echo$sf_user->getFlash('confirmation') ?>
     </div>
 <?php else: ?>
   	<h1>Formulaire de Contact</h1>
