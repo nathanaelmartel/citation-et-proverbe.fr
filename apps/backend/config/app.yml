@@ -2,21 +2,4 @@
 # http://www.symfony-project.org/reference/1_4/en/11-App
 
 # default values
-all:
-  sf_guard_plugin:
-    routes_register: true
-
-  melody:
-    create_user: true
-    twitter:
-      key: 1Dd0gt1PqUT2YGJ9B03og
-      secret: 5CWm8qDSANO3q5D45Uezz2wYqpoz1fLVUd8Vq3jPlU
-      callback: @default_twitter
-      user:
-       username:
-         call: me
-         path: screen_name
-         prefix: "Twitter "    
-      provider: twitter
-      create_user: false 
-      redirect_register: @default_twitter
+#all:

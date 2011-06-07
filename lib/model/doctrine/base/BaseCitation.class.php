@@ -14,21 +14,24 @@ Doctrine_Manager::getInstance()->bindComponent('Citation', 'doctrine');
  * @property int $is_active
  * @property datetime $last_published_at
  * @property datetime $author_last_published_at
+ * @property Doctrine_Collection $Words
  * 
- * @method string   getQuote()                    Returns the current record's "quote" value
- * @method string   getAuthor()                   Returns the current record's "author" value
- * @method string   getSource()                   Returns the current record's "source" value
- * @method string   getWebsite()                  Returns the current record's "website" value
- * @method int      getIsActive()                 Returns the current record's "is_active" value
- * @method datetime getLastPublishedAt()          Returns the current record's "last_published_at" value
- * @method datetime getAuthorLastPublishedAt()    Returns the current record's "author_last_published_at" value
- * @method Citation setQuote()                    Sets the current record's "quote" value
- * @method Citation setAuthor()                   Sets the current record's "author" value
- * @method Citation setSource()                   Sets the current record's "source" value
- * @method Citation setWebsite()                  Sets the current record's "website" value
- * @method Citation setIsActive()                 Sets the current record's "is_active" value
- * @method Citation setLastPublishedAt()          Sets the current record's "last_published_at" value
- * @method Citation setAuthorLastPublishedAt()    Sets the current record's "author_last_published_at" value
+ * @method string              getQuote()                    Returns the current record's "quote" value
+ * @method string              getAuthor()                   Returns the current record's "author" value
+ * @method string              getSource()                   Returns the current record's "source" value
+ * @method string              getWebsite()                  Returns the current record's "website" value
+ * @method int                 getIsActive()                 Returns the current record's "is_active" value
+ * @method datetime            getLastPublishedAt()          Returns the current record's "last_published_at" value
+ * @method datetime            getAuthorLastPublishedAt()    Returns the current record's "author_last_published_at" value
+ * @method Doctrine_Collection getWords()                    Returns the current record's "Words" collection
+ * @method Citation            setQuote()                    Sets the current record's "quote" value
+ * @method Citation            setAuthor()                   Sets the current record's "author" value
+ * @method Citation            setSource()                   Sets the current record's "source" value
+ * @method Citation            setWebsite()                  Sets the current record's "website" value
+ * @method Citation            setIsActive()                 Sets the current record's "is_active" value
+ * @method Citation            setLastPublishedAt()          Sets the current record's "last_published_at" value
+ * @method Citation            setAuthorLastPublishedAt()    Sets the current record's "author_last_published_at" value
+ * @method Citation            setWords()                    Sets the current record's "Words" collection
  * 
  * @package    citations
  * @subpackage model
@@ -70,6 +73,11 @@ abstract class BaseCitation extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
+        $this->hasMany('Word as Words', array(
+             'refClass' => 'WordCitation',
+             'local' => 'citation_id',
+             'foreign' => 'word_id'));
+
         $sluggable0 = new Doctrine_Template_Sluggable(array(
              'unique' => true,
              'fields' => 

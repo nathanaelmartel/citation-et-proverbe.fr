@@ -1,0 +1,24 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Word
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          word
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+          display: [=name, count_citations, slug, is_active]
+          sort: [name, asc]
+      filter:  
+          display: [name, slug, is_active]
+      form:    ~
+      edit:    ~
+      new:     ~

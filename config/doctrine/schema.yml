@@ -57,3 +57,36 @@ Contact:
     collate: utf8_unicode_ci
     charset: utf8
     
+Word:    
+  tableName: word
+  actAs:
+    Sluggable:
+      unique: true
+      fields: [name]
+    Timestampable:
+
+  columns:
+    name: { type: string(255), notnull: true }
+    is_active: {type: int}
+    
+  relations:
+    Citations:
+      class: Citation
+      refClass: WordCitation
+      foreignAlias: Words
+      
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+    
+WordCitation:    
+  tableName: word_citation
+
+  columns:
+    word_id: {type: integer, primary: true}
+    citation_id: {type: integer, primary: true}
+
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+    

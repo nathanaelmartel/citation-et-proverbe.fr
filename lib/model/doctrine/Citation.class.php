@@ -58,4 +58,11 @@ class Citation extends BaseCitation
     
     return $message;
 	}
+	
+	public function getWords()
+	{
+		$quote = simplementNat::slugify($this->quote);
+		
+		return array_unique(split(' ', $quote));
+	}
 }

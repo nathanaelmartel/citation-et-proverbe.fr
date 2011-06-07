@@ -1,5 +1,5 @@
 <?php
 
-class myUser extends sFUser
+class myUser extends sfBasicSecurityUser
 {
 }

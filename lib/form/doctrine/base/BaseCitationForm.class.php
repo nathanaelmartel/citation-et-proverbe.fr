@@ -26,6 +26,7 @@ abstract class BaseCitationForm extends BaseFormDoctrine
       'slug'                     => new sfWidgetFormInputText(),
       'created_at'               => new sfWidgetFormDateTime(),
       'updated_at'               => new sfWidgetFormDateTime(),
+      'words_list'               => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Word')),
     ));
 
     $this->setValidators(array(
@@ -40,6 +41,7 @@ abstract class BaseCitationForm extends BaseFormDoctrine
       'slug'                     => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'created_at'               => new sfValidatorDateTime(),
       'updated_at'               => new sfValidatorDateTime(),
+      'words_list'               => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Word', 'required' => false)),
     ));
 
     $this->validatorSchema->setPostValidator(
@@ -58,6 +60,62 @@ abstract class BaseCitationForm extends BaseFormDoctrine
   public function getModelName()
   {
     return 'Citation';
+  }
+
+  public function updateDefaultsFromObject()
+  {
+    parent::updateDefaultsFromObject();
+
+    if (isset($this->widgetSchema['words_list']))
+    {
+      $this->setDefault('words_list', $this->object->Words->getPrimaryKeys());
+    }
+
+  }
+
+  protected function doSave($con = null)
+  {
+    $this->saveWordsList($con);
+
+    parent::doSave($con);
+  }
+
+  public function saveWordsList($con = null)
+  {
+    if (!$this->isValid())
+    {
+      throw $this->getErrorSchema();
+    }
+
+    if (!isset($this->widgetSchema['words_list']))
+    {
+      // somebody has unset this widget
+      return;
+    }
+
+    if (null === $con)
+    {
+      $con = $this->getConnection();
+    }
+
+    $existing = $this->object->Words->getPrimaryKeys();
+    $values = $this->getValue('words_list');
+    if (!is_array($values))
+    {
+      $values = array();
+    }
+
+    $unlink = array_diff($existing, $values);
+    if (count($unlink))
+    {
+      $this->object->unlink('Words', array_values($unlink));
+    }
+
+    $link = array_diff($values, $existing);
+    if (count($link))
+    {
+      $this->object->link('Words', array_values($link));
+    }
   }
 
 }
