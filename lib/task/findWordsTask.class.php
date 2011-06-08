@@ -32,7 +32,18 @@ EOF;
     // initialize the database connection
     $databaseManager = new sfDatabaseManager($this->configuration);
     $connection = $databaseManager->getDatabase($options['connection'])->getConnection();
-
+/*
+SELECT * FROM (
+SELECT name, count(citation_id) as nb
+FROM word
+LEFT OUTER JOIN word_citation ON (id=word_id)
+GROUP BY name ) as aaa
+ORDER BY nb DESC
+ */
+    
+    
+    
+    
     // add your code here
     for($i = 0;$i < 60000; $i += 100)
     {

@@ -34,10 +34,14 @@ class WordTable extends Doctrine_Table
           $word_id = $Words[0]->id;
         } 
         
-        $word_citation = new WordCitation;
-        $word_citation->citation_id = $citation_id;
-        $word_citation->word_id = $word_id;
-        $word_citation->save();
+        $WordsCitations = Doctrine::getTable('WordCitation')->findByWordIdAndCitationId($word_id, $citation_id);
+        if (count($WordsCitations) == 0)
+        {
+	        $word_citation = new WordCitation;
+	        $word_citation->citation_id = $citation_id;
+	        $word_citation->word_id = $word_id;
+	        $word_citation->save();
+        }
       }
   }
 }
