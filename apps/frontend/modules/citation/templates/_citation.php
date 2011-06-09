@@ -5,7 +5,7 @@
 	      	<?php echo $citation->getQuoteWord(ESC_RAW) ?>
 	      </blockquote>
 	      
-	      <!--  <?php foreach ($this->getActiveWords() as $Word)
+	      <!--  <?php foreach ($citation->getActiveWords() as $Word)
 		{
 			echo str_replace(
 				$Word->name,
