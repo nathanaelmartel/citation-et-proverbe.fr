@@ -7,7 +7,7 @@
 	      
 	      <!--  <?php foreach ($citation->getActiveWords() as $Word)
 		{
-			echo str_replace(
+			echo str_ireplace(
 				$Word->name,
 				link_to($Word->name, '@word?slug='.$Word->getSlug(), true),
 				$citation->getQuote()
