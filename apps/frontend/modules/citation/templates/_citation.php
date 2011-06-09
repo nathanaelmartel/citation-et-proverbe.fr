@@ -5,6 +5,8 @@
 	      	<?php echo $citation->getQuoteWord(ESC_RAW) ?>
 	      </blockquote>
 	      
+	      <!--  <?php echo $citation->getActiveWords() ?> -->
+	      
 	      <?php if ($citation->getAuthor()): ?>
 		      <div class="author">
             <?php if ($citation->getAuthorSlug()): ?>
