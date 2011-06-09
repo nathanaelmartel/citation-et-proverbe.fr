@@ -11,3 +11,5 @@ all:
     email_from: contact@citation-et-proverbe.fr
     email_to: contact@citation-et-proverbe.fr
     email_bcc: []
+    
+  pager: 50

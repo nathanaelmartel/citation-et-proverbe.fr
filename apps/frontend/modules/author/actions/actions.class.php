@@ -22,7 +22,7 @@ class authorActions extends sfActions
     $this->author = $author;
     //$this->citations = $author->getCitations();
     
-    $this->citations = new sfDoctrinePager('Citation', '25');
+    $this->citations = new sfDoctrinePager('Citation', sfConfig::get('app_pager'));
 		$this->citations->setQuery(Doctrine_Query::create()
     ->select('*')
     ->from('Citation c')
