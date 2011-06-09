@@ -20,7 +20,5 @@ generator:
       filter:  
           display: [name, slug, is_active]
       form:
-          display: [=name, slug, is_active]
       edit:
-          display: [=name, slug, is_active]
       new:     ~

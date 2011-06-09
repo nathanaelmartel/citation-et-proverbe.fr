@@ -14,7 +14,8 @@ class WordForm extends BaseWordForm
   {
   	unset(  
 			$this['created_at'],  
-			$this['updated_at']
+			$this['updated_at'],
+			$this['citations_list']
 		);  
   }
 }
