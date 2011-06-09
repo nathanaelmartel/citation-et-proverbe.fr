@@ -25,6 +25,15 @@ class wordActions extends sfActions
     $response->setTitle('Citation : toutes les citations parlant de '.$word->getName() );
     
     $this->word = $word;
-    $this->citations = $word->getCitations();
+    //$this->citations = $word->getCitations();
+    
+    $this->citations = new sfDoctrinePager('Citation', '25');
+		$this->citations->setQuery(Doctrine_Query::create()
+      ->select()
+      ->from('Citation c')
+      ->leftJoin('c.WordCitation w')
+      ->AddWhere('w.word_id = ?', $word->getId()));
+		$this->citations->setPage($request->getParameter('page', 1));
+		$this->citations->init();
   }
 }

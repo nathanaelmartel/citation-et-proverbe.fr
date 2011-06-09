@@ -20,6 +20,14 @@ class authorActions extends sfActions
     $response->setTitle('Citation '.$author->getAuthor().' : toutes les citations '.$author->getAuthor() );
     
     $this->author = $author;
-    $this->citations = $author->getCitations();
+    //$this->citations = $author->getCitations();
+    
+    $this->citations = new sfDoctrinePager('Citation', '25');
+		$this->citations->setQuery(Doctrine_Query::create()
+    ->select('*')
+    ->from('Citation c')
+    ->where('c.author = ?', $author->getAuthor()));
+		$this->citations->setPage($request->getParameter('page', 1));
+		$this->citations->init();
   }
 }

@@ -1,9 +1,8 @@
 
       <article>
 	      <blockquote>
-	      	<a href="<?php echo url_for('@single_citation?slug='.$citation->getSlug()) ?>">
-	      		<?php echo $citation->getQuote() ?>
-	      	</a>
+	      	<a rel="bookmark" class="permalink" href="<?php echo url_for('@single_citation?slug='.$citation->getSlug(), true) ?>">#</a>
+	      	<?php echo $citation->getQuoteWord(ESC_RAW) ?>
 	      </blockquote>
 	      
 	      <?php if ($citation->getAuthor()): ?>

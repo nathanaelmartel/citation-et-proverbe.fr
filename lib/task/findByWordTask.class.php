@@ -39,7 +39,7 @@ EOF;
     ->from('Citation c')
     ->addWhere('quote like ?', '%amour%');
     
-    echo $q->getSqlQuery();echo "\n";
+    //echo $q->getSqlQuery();echo "\n";
     
     $citations = $q->execute();
     

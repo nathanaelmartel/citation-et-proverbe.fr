@@ -61,7 +61,7 @@ ORDER BY nb DESC
 	    {
 	    	//print_r($citation->getWords());
 	    	echo $citation->getId()."\n";
-	    	foreach ($citation->getWords() as $word)
+	    	foreach ($citation->findWords() as $word)
 	    	{
 	    		WordTable::addWord($word, $citation->id);
 	    	}

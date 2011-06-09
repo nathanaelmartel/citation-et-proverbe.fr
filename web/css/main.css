@@ -151,10 +151,44 @@ h1 {
 	font-size : 50%;
 }
 
-blockquote a {
+blockquote {
 	font-family : 'MarketingScriptRegular',Arial,sans-serif;
 	color : #000000;
+}
+
+blockquote a {
+	color : #000000;
+}
+
+blockquote a.permalink {
+	font-style: italic;
+	color: #999999;
 	text-decoration : none;
+	font-size: 75%;
+}
+
+.pagination {
+	text-align: center;
+}
+
+.pagination a {
+	padding : 0 10px;
+	color : #666666;
+	text-decoration: none;
+	transition: color .5s ease-in;
+	-webkit-transition: color .5s ease-in;  
+  -moz-transition: color .5s ease-in;  
+  -o-transition: color .5s ease-in; 
+}
+
+.pagination span {
+	padding : 0 10px;
+	color : #000000;
+}
+
+.pagination a:hover, .pagination a:active, .pagination a:focus {
+	color : #000000;
+	text-decoration: underline;
 }
 
 nav, footer {

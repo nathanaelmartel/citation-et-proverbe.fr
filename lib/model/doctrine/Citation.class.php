@@ -59,10 +59,38 @@ class Citation extends BaseCitation
     return $message;
 	}
 	
-	public function getWords()
+	public function findWords()
 	{
 		$quote = simplementNat::slugify($this->quote);
 		
 		return array_unique(split(' ', $quote));
+	}
+	
+	public function getQuoteWord()
+	{
+		$quote = $this->quote;
+		
+		foreach ($this->getActiveWords() as $Word)
+		{
+			$quote = str_replace(
+				$Word->name,
+				link_to($Word->name, '@word?slug='.$Word->getSlug(), true),
+				$quote
+			);
+		}
+		
+		return $quote;
+	}
+	
+	public function getActiveWords()
+	{
+		$q = Doctrine_Query::create()
+      ->select()
+      ->from('Word w')
+      ->leftJoin('w.WordCitation wc')
+      ->AddWhere('wc.citation_id = ?', $this->id)
+      ->andWhere('w.is_active = ?', 1);
+      
+    return $q->execute();
 	}
 }
