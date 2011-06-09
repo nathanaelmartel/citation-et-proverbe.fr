@@ -4,7 +4,7 @@
 
 word:
   url:   /mot/:slug
-  param: { module: word, action: index }
+  param: { module: word, action: show }
 
 contact:
   url:   /contact

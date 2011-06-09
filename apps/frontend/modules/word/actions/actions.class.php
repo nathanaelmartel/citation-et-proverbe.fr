@@ -15,8 +15,16 @@ class wordActions extends sfActions
   *
   * @param sfRequest $request A request object
   */
-  public function executeIndex(sfWebRequest $request)
+  public function executeShow(sfWebRequest $request)
   {
-  	$this->word = $request->getParameter('slug');
+  	$this->forward404Unless($word = Doctrine::getTable('Word')->findOneBySlug(array($request->getParameter('slug'))), sprintf('Object citation does not exist (%s).', $request->getParameter('slug')));
+  	$this->forward404Unless($word->getIsActive());
+  	
+    $response = $this->getResponse();
+    $response->addMeta('description', 'Retrouvez sur notre site toutes les citations parlant de '.$word->getName() );
+    $response->setTitle('Citation : toutes les citations parlant de '.$word->getName() );
+    
+    $this->word = $word;
+    $this->citations = $word->getCitations();
   }
 }
