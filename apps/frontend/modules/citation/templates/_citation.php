@@ -5,17 +5,6 @@
 	      	<?php echo $citation->getQuoteWord(ESC_RAW) ?>
 	      </blockquote>
 	      
-	      <!--  <?php foreach ($citation->getActiveWords() as $Word)
-		{
-			echo str_ireplace(
-				$Word->name,
-				link_to($Word->name, '@word?slug='.$Word->getSlug(), true),
-				$citation->getQuote()
-			);
-			
-			print_r($Word); 
-		} ?> -->
-	      
 	      <?php if ($citation->getAuthor()): ?>
 		      <div class="author">
             <?php if ($citation->getAuthorSlug()): ?>
