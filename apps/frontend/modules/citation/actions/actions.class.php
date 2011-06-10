@@ -74,8 +74,8 @@ class citationActions extends sfActions
     $this->citations = Doctrine::getTable('Citation')
       ->createQuery('a')
       ->where('is_active = ?', 1)
-      ->limit($nb*2)
-      ->offset($nb*2*$page)
+      ->limit($nb)
+      ->offset($nb*$page)
       ->orderBy('last_published_at desc')
       ->execute();
     $this->setLayout(false);
