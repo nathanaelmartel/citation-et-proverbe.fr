@@ -2,13 +2,25 @@
 
 <?php foreach ($authors as $author): ?>
 <url>
-  <loc>http://www.citation-et-proverbe.fr/auteur/<?php echo $author->getSlug() ?></loc>
+  <loc>
+  	<?php echo url_for('@author?slug='.$author->getSlug(), array('absolute' => true)) ?>
+  </loc>
+</url>
+<?php endforeach; ?>
+
+<?php foreach ($words as $word): ?>
+<url>
+  <loc>
+  	<?php echo url_for('@word?slug='.$word->getSlug(), array('absolute' => true)) ?>
+  </loc>
 </url>
 <?php endforeach; ?>
 
 <?php foreach ($citations as $citation): ?>
 <url>
-  <loc>http://www.citation-et-proverbe.fr/<?php echo $citation->getSlug() ?></loc>
+  <loc>
+  	<?php echo url_for('@single_citation?slug='.$citation->getSlug(), array('absolute' => true)) ?>
+  </loc>
 </url>
 <?php endforeach; ?>
   
