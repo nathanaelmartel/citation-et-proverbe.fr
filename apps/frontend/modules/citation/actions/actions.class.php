@@ -57,7 +57,7 @@ class citationActions extends sfActions
   public function executeSitemap(sfWebRequest $request)
   {
   	$page = $request->getParameter('page', 0);
-  	$nb = 5000;
+  	$nb = 2500;
   	
     $this->authors = Doctrine::getTable('Author')
       ->createQuery('a')
