@@ -20,6 +20,10 @@ author:
   url:   /auteur/:slug
   param: { module: author, action: show }
 
+authors:
+  url:   /auteur
+  param: { module: author, action: index }
+
 feed:
   url:   /feed
   param: { module: citation, action: feed }

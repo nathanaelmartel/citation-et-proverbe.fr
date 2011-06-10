@@ -233,3 +233,25 @@ footer a:hover, footer a:active, footer a:focus {
 	text-align: center;
 }
 
+
+.authors {
+	padding-bottom: 25px;
+	font-size: 150%;
+	line-height: 1.7em;
+}
+.authors a.author {
+	color: #000000;
+	text-decoration: none;
+	padding: 0 5px;
+}
+.authors a.author:hover, .authors a.author:active, .authors a.author:focus {
+	text-decoration: underline;
+}
+
+@media handheld, only screen and (max-width: 640px), only screen and (max-device-width: 640px) {
+	.form, article, #site-name, nav, footer {width: auto;margin-left: 5%;margin-right:5%;}
+}
+
+
+
+
