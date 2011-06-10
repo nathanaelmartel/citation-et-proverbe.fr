@@ -248,6 +248,16 @@ footer a:hover, footer a:active, footer a:focus {
 	text-decoration: underline;
 }
 
+
+.adsense {
+	margin: auto;
+}
+.adsense-728 {
+	width: 728px;
+}
+
+
+
 @media handheld, only screen and (max-width: 640px), only screen and (max-device-width: 640px) {
 	.form, article, #site-name, nav, footer {width: auto;margin-left: 5%;margin-right:5%;}
 }
