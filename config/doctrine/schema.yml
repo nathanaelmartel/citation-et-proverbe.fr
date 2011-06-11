@@ -15,6 +15,7 @@ Citation:
     is_active: {type: int}
     last_published_at: {type: datetime}
     author_last_published_at: {type: datetime}
+    hash: {type: string(64)}
 
 Link:
   connection: doctrine

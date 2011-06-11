@@ -14,6 +14,7 @@ Doctrine_Manager::getInstance()->bindComponent('Citation', 'doctrine');
  * @property int $is_active
  * @property datetime $last_published_at
  * @property datetime $author_last_published_at
+ * @property string $hash
  * @property Doctrine_Collection $Words
  * 
  * @method string              getQuote()                    Returns the current record's "quote" value
@@ -23,6 +24,7 @@ Doctrine_Manager::getInstance()->bindComponent('Citation', 'doctrine');
  * @method int                 getIsActive()                 Returns the current record's "is_active" value
  * @method datetime            getLastPublishedAt()          Returns the current record's "last_published_at" value
  * @method datetime            getAuthorLastPublishedAt()    Returns the current record's "author_last_published_at" value
+ * @method string              getHash()                     Returns the current record's "hash" value
  * @method Doctrine_Collection getWords()                    Returns the current record's "Words" collection
  * @method Citation            setQuote()                    Sets the current record's "quote" value
  * @method Citation            setAuthor()                   Sets the current record's "author" value
@@ -31,6 +33,7 @@ Doctrine_Manager::getInstance()->bindComponent('Citation', 'doctrine');
  * @method Citation            setIsActive()                 Sets the current record's "is_active" value
  * @method Citation            setLastPublishedAt()          Sets the current record's "last_published_at" value
  * @method Citation            setAuthorLastPublishedAt()    Sets the current record's "author_last_published_at" value
+ * @method Citation            setHash()                     Sets the current record's "hash" value
  * @method Citation            setWords()                    Sets the current record's "Words" collection
  * 
  * @package    citations
@@ -67,6 +70,10 @@ abstract class BaseCitation extends sfDoctrineRecord
              ));
         $this->hasColumn('author_last_published_at', 'datetime', null, array(
              'type' => 'datetime',
+             ));
+        $this->hasColumn('hash', 'string', 64, array(
+             'type' => 'string',
+             'length' => 64,
              ));
     }
 
