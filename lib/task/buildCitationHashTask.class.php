@@ -38,7 +38,7 @@ EOF;
     ->select('*')
     ->from('Citation c')
     ->where('hash = ?', '')
-    ->limit(10);
+    ->limit(100);
     
     //echo $q->getSqlQuery();echo "\n";
     
