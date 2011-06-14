@@ -1,4 +1,8 @@
-<h1><?php echo $word->getName() ?></h1>
+<h1>Citation <?php echo $word->getName() ?> <br/> meilleurs citations sur le theme <?php echo $word->getName() ?></h1>
+
+<div id="site-description" >
+	<strong>Citation</strong> et <strong>Proverbe</strong> met à votre disposition une liste de <strong>citation</strong> sur le thème <strong><?php echo $word->getName() ?></strong>. Parmi plus de 50 000 citations, voici les meilleures <strong>citations <?php echo $word->getName() ?></strong>, à partager bien sur !
+</div>
 
 <?php foreach($citations as $citation): ?>
   <?php include_partial('citation/citation', array('citation' => $citation)) ?>

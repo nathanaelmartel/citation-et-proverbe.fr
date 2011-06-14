@@ -141,8 +141,20 @@ article {
 h1 {
   text-align : center;
   font-family : 'HollaRegular',Arial,sans-serif;
-  font-size : 500%;
+  font-size : 350%;
 	color : #000000;
+}
+
+h2 {
+  text-align : center;
+	color : #000000;
+}
+
+#site-description {
+	padding : 5px 0;
+	width: 650px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .source {
@@ -253,6 +265,32 @@ footer a:hover, footer a:active, footer a:focus {
 }
 .authors a.author:hover, .authors a.author:active, .authors a.author:focus {
 	text-decoration: underline;
+}
+
+
+div.authors {
+	margin: auto;
+	width: 728px;
+}
+
+div.authors ul {
+	margin: 0;
+	padding: 0;
+}
+div.authors.top-authors li {
+	width: 50%;
+	font-size: 130%;
+	text-align: left;
+}
+div.authors li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: block;
+	width: 33%;
+	font-size: 90%;
+	float: left;
+	text-align: center;
 }
 
 

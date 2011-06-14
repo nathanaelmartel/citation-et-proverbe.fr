@@ -21,8 +21,9 @@ class wordActions extends sfActions
   	$this->forward404Unless($word->getIsActive());
   	
     $response = $this->getResponse();
-    $response->addMeta('description', 'Retrouvez sur notre site toutes les citations parlant de '.$word->getName() );
-    $response->setTitle('Citation : toutes les citations parlant de '.$word->getName() );
+    $response->addMeta('description', $word->getName().': un thème sur lequel beaucoup d\'auteurs ont écrit. Consultez les meilleures citations sur ce sujet et partagez-les sur les réseaux sociaux !' );
+    $response->addMeta('keywords', $word->getName().', citation '.$word->getName().', proverbe '.$word->getName().', citation, citations, proverbe, proverbes' );
+    $response->setTitle('citation '.$word->getName().' - citations '.$word->getName().' célèbres' );
     
     $this->word = $word;
     //$this->citations = $word->getCitations();

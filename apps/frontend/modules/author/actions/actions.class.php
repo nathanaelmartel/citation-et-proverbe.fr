@@ -11,28 +11,22 @@
 class authorActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
-  {/*
-    $this->authors = Doctrine::getTable('Author')
-      ->createQuery('a')
-    	->leftJoin('Citation c')
-    	->on('c.author = Author.author')
-      ->where('is_active = ?', 1)
-      ->limit(100)
-      ->orderBy('')
-      ->execute();
-      *//*
-		$rsm = new ResultSetMapping;
-		$rsm->addEntityResult('Author', 'a');
-		$rsm->addFieldResult('a', 'author', 'author');
-		$rsm->addFieldResult('a', 'slug', 'slug');
-		$rsm->addFieldResult('a', 'nb', 'nb');*/ 
+  {
+
+  	$dbh = Doctrine_Manager::getInstance()->getCurrentConnection()->getDbh();
+  	
+		$top_query = 'SELECT a.author, a.slug, count(c.id) as nb 
+			FROM author a left join citation c ON a.author = c.author 
+			WHERE a.is_active = 1 and c.is_active = 1 
+			GROUP BY a.author HAVING nb > 100 LIMIT 10';
+		
+		$this->top_authors = $dbh->query($top_query); 
   	
 		$query = 'SELECT a.author, a.slug, count(c.id) as nb 
 			FROM author a left join citation c ON a.author = c.author 
 			WHERE a.is_active = 1 and c.is_active = 1 
-			GROUP BY a.author HAVING nb > 70';
+			GROUP BY a.author HAVING nb > 70 LIMIT 10, 100';
 		
-  	$dbh = Doctrine_Manager::getInstance()->getCurrentConnection()->getDbh();
 		$this->authors = $dbh->query($query); 
 		
   	
