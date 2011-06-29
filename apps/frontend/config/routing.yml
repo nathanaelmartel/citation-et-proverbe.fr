@@ -3,8 +3,16 @@
 
 
 word:
+  url:   /theme/:slug
+  param: { module: word, action: show }
+
+word_old:
   url:   /mot/:slug
   param: { module: word, action: show }
+  
+words:
+  url:   /themes
+  param: { module: word, action: index }
 
 contact:
   url:   /contact

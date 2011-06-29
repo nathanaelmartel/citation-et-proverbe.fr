@@ -1,3 +1,5 @@
+<!-- google_ad_section_start -->
+
 <h1>Auteurs de Citations</h1>
 
 <h2>Top 10 des auteurs de citations</h2>
@@ -27,4 +29,6 @@
 </div>
 
 <div class="clear"></div>
+
+<!-- google_ad_section_end -->
 

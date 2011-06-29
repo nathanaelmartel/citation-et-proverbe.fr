@@ -1,5 +1,9 @@
 
+
       <article>
+      
+				<!-- google_ad_section_start -->
+
 	      <blockquote>
 	      	<a rel="bookmark" class="permalink" href="<?php echo url_for('@single_citation?slug='.$citation->getSlug(), true) ?>">#</a>
 	      	<?php echo $citation->getQuoteWord(ESC_RAW) ?>
@@ -22,11 +26,14 @@
 		      	<?php echo $citation->getSource() ?>
 		      </div>
 	      <?php endif;?>
+
+				<!-- google_ad_section_end -->
         
-          <div class="share">
-            <a href="http://www.facebook.com/sharer.php?u=<?php echo url_for('@single_citation?slug='.$citation->getSlug(), array('absolute' => true)) ?>&t=<?php echo str_replace(' ', '%20', substr($citation->getQuote(), 0, stripos($citation->getQuote(), ' ', 50)+1 ).'... - '.$citation->getAuthor())?>" target="_blank" title="partager sur facebook" class="share-facebook" > </a>
-            <a href="http://twitter.com/share?text=<?php echo str_replace(' ', '%20', substr($citation->getQuote(), 0, stripos($citation->getQuote(), ' ', 50)+1 ).'... - '.$citation->getAuthor())?>&url=<?php echo url_for('@single_citation?slug='.$citation->getSlug(), array('absolute' => true)) ?>" target="_blank" title="partager sur twitter" class="share-twitter" ></a>
-            <span>Partagez cette citation !</span>
-          </div>
+        <div class="share">
+          <a href="http://www.facebook.com/sharer.php?u=<?php echo url_for('@single_citation?slug='.$citation->getSlug(), array('absolute' => true)) ?>&t=<?php echo str_replace(' ', '%20', substr($citation->getQuote(), 0, stripos($citation->getQuote(), ' ', 50)+1 ).'... - '.$citation->getAuthor())?>" target="_blank" title="partager sur facebook" class="share-facebook" > </a>
+          <a href="http://twitter.com/share?text=<?php echo str_replace(' ', '%20', substr($citation->getQuote(), 0, stripos($citation->getQuote(), ' ', 50)+1 ).'... - '.$citation->getAuthor())?>&url=<?php echo url_for('@single_citation?slug='.$citation->getSlug(), array('absolute' => true)) ?>" target="_blank" title="partager sur twitter" class="share-twitter" ></a>
+          <span>Partagez cette citation !</span>
+        </div>
           
       </article>
+

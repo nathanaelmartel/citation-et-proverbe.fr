@@ -97,8 +97,8 @@ class citationActions extends sfActions
 
 	  $feed->setTitle('Citations francophones');
 	  $feed->setLink('http://www.citation-et-proverbe.fr/');
-	  $feed->setAuthorEmail('citation@fam-martel.eu');
-	  $feed->setAuthorName('Nathanaël Martel');
+	  $feed->setAuthorEmail('contact@citation-et-proverbe.fr');
+	  $feed->setAuthorName('Nathanaël Martel - Sebastien Cay');
 		
 	  foreach ($citations as $citation)
 	  {
@@ -109,7 +109,7 @@ class citationActions extends sfActions
        $item->setTitle($citation->author);
 	    $item->setLink('http://www.citation-et-proverbe.fr/'.$citation->slug.'/?utm_source=feed&amp;utm_medium=feed&amp;utm_campaign=feed');
 	    $item->setAuthorName($citation->author);
-	    $item->setAuthorEmail('citation@fam-martel.eu');
+	    $item->setAuthorEmail('contact@citation-et-proverbe.fr');
 	    $item->setPubdate(strtotime($citation->getLastPublishedAt()));
 	    $item->setUniqueId('http://www.citation-et-proverbe.fr/'.$citation->slug.'/');
 	
