@@ -103,10 +103,7 @@ class citationActions extends sfActions
 	  foreach ($citations as $citation)
 	  {
 	    $item = new sfFeedItem();
-	    if ($citation->author == '')
-       $item->setTitle($citation->quote);
-      else
-       $item->setTitle($citation->author);
+      $item->setTitle($citation->quote.' - '.$citation->author);
 	    $item->setLink('http://www.citation-et-proverbe.fr/'.$citation->slug.'/?utm_source=feed&amp;utm_medium=feed&amp;utm_campaign=feed');
 	    $item->setAuthorName($citation->author);
 	    $item->setAuthorEmail('contact@citation-et-proverbe.fr');
