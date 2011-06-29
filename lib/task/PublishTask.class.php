@@ -50,19 +50,8 @@ EOF;
     
     $hour = date('H');
     
-    /*
-    echo $hour."\n";
-    echo ($hour % 2)."\n";
-    if (($hour % 2) == 0)
-      echo "pair\n";
-    else
-      echo "impair\n";
-    die();
-    */
-    
-    // pas de post la nuit, ni les heures paires
     if (($hour < 7) || (($hour%2) == 0))
-      die();
+      die("pas de twitt à cette heure ci : pas de post la nuit, ni les heures paires\n");
     
     $citation = $q->fetchOne();
     

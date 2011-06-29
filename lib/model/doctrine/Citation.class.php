@@ -36,24 +36,32 @@ class Citation extends BaseCitation
       return false;
 	}
 	
-	public function getTwitterMessage($show_author = true)
+	public function getTwitterMessage($show_author = true, $show_tag = true)
 	{
-
-	$utm_campaign = 'citation_fr';
-	if (!$show_author)
-		$utm_campaign = str_replace(' ', '_', $this->author);
+		$utm_campaign = 'citation_fr';
+		if (!$show_author)
+			$utm_campaign = str_replace(' ', '_', $this->author);
 		
     $short_url = simplementNat::make_isdg_url('http://www.citation-et-proverbe.fr/'.$this->slug.'/?utm_source=twitter&utm_medium=twitter&utm_campaign='.$utm_campaign);
     $message = $short_url.' '.$this->quote;
     
+    $message_suffix = '';
     if ($show_author)
-      $message .= ' - '.$this->author;
-      
-    if (strlen($message) > 140)
+      $message_suffix .= ' - '.$this->author;
+    
+    if ($show_tag)
     {
-      $message = substr($message, 0, 137).'...';
+      $message_suffix .= ' #citation';
+      foreach($this->getActiveWords() as $word) {
+      	$message_suffix .= ' #'.$word->name;
+      }
     }
-    $message = str_replace($short_url.' ', '', $message);
+      
+    if (strlen($message.$message_suffix) > 139)
+    {
+      $message = substr($message, 0, 135-strlen($message_suffix)).'...';
+    }
+    $message = str_replace($short_url.' ', '', $message.$message_suffix);
     $message = $message.' '.$short_url;
     
     return $message;
