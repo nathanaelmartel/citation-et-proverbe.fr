@@ -31,8 +31,9 @@
         
         <div class="share">
           <a href="http://www.facebook.com/sharer.php?u=<?php echo url_for('@single_citation?slug='.$citation->getSlug(), array('absolute' => true)) ?>&t=<?php echo str_replace(' ', '%20', substr($citation->getQuote(), 0, stripos($citation->getQuote(), ' ', 50)+1 ).'... - '.$citation->getAuthor())?>" target="_blank" title="partager sur facebook" class="share-facebook" > </a>
-          <a href="http://twitter.com/share?text=<?php echo str_replace(' ', '%20', substr($citation->getQuote(), 0, stripos($citation->getQuote(), ' ', 50)+1 ).'... - '.$citation->getAuthor())?>&url=<?php echo url_for('@single_citation?slug='.$citation->getSlug(), array('absolute' => true)) ?>" target="_blank" title="partager sur twitter" class="share-twitter" ></a>
-          <span>Partagez cette citation !</span>
+          <a href="http://twitter.com/share?text=<?php echo str_replace(' ', '%20', $citation->getQuote().' - '.$citation->getAuthor())?>&url=<?php echo url_for('@single_citation?slug='.$citation->getSlug(), array('absolute' => true)) ?>" target="_blank" title="partager sur twitter" class="share-twitter" ></a>
+          <span class="google-plus-1"><g:plusone count="false" href="<?php echo url_for('@single_citation?slug='.$citation->getSlug(), array('absolute' => true)) ?>"></g:plusone></span>
+          <span class="phrase">Partagez cette citation !</span>
         </div>
           
       </article>

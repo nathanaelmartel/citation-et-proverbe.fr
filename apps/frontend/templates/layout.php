@@ -17,6 +17,9 @@
     <?php include_partial('global/nav')?>
     <?php echo $sf_content ?>
     <?php include_partial('global/footer')?>
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+		  {lang: 'fr'}
+		</script>
     <?php include_partial('global/piwik')?>
   </body>
 </html>
