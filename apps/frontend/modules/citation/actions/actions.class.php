@@ -120,6 +120,7 @@ class citationActions extends sfActions
 	    } else {
 		    	$description .= '</p>' ;
 	    }
+	    
 	    $description .= '<p>Retrouvez plus de citations sur <a href="http://www.citation-et-proverbe.fr/?utm_source=feed&utm_medium=feed&utm_campaign=feed">www.citation-et-proverbe.fr</a></p>';
 
 	    $item->setDescription($description);
