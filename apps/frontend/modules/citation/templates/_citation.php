@@ -38,7 +38,7 @@
 			    <div class="words" >
 			    	Trouvez d'autres citations sur les thèmes suivant :
 						<?php foreach ($citation->getActiveWords() as $Word): ?>
-							<?php echo link_to($Word->getName(), '@word?slug='.$Word->getSlug(), true) ?>
+							<?php echo link_to($Word->getName(), '@word?slug='.$Word->getSlug(), true) ?>, 
 			      <?php endforeach;?>
 			    </div>
 	      <?php endif;?>

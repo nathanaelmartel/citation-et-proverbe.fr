@@ -12,4 +12,4 @@ all:
     email_to: contact@citation-et-proverbe.fr
     email_bcc: []
     
-  pager: 50
+  pager: 20
