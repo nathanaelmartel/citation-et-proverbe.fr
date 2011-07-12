@@ -59,6 +59,19 @@ html {
 	background-color : #D9E0E6;
 }
 
+body {
+	width: 1100px;
+	margin: 0 auto;
+	position: relative;
+}
+
+#amazon-search {
+	position: absolute;
+	top: 217px;
+	right: 0;
+	width: 160px;
+}
+
 article {
 	-moz-border-radius : 10px;
   -webkit-border-radius: 10px;
@@ -165,6 +178,16 @@ h2 {
 	text-align : right;
 	color : #666666;
 	font-size : 50%;
+}
+
+.books {
+	text-align : right;
+	color : #666666;
+	font-size : 50%;
+}
+
+.books a {
+	color : #666666;
 }
 
 blockquote {
