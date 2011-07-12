@@ -80,13 +80,13 @@ class Citation extends BaseCitation
 		
 		foreach ($this->getActiveWords() as $Word)
 		{
-			$quote = str_ireplace(
-				$Word->name,
-				link_to($Word->name, '@word?slug='.$Word->getSlug(), true),
+			$quote = preg_replace(
+				'`\b('.$Word->name.')[sx]?\b`si',
+				link_to('$1', '@word?slug='.$Word->getSlug(), true),
 				$quote
 			);
 		}
-		
+
 		return $quote;
 	}
 	

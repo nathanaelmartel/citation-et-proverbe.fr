@@ -190,6 +190,16 @@ h2 {
 	color : #666666;
 }
 
+.words {
+	color : #666666;
+	font-size : 50%;
+	margin: 1em 0;
+}
+
+.words a {
+	color : #666666;
+}
+
 blockquote {
 	font-family : 'MarketingScriptRegular',Arial,sans-serif;
 	color : #000000;
