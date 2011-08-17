@@ -14,7 +14,8 @@ class CitationForm extends BaseCitationForm
   {
   	unset(  $this['slug'],
             $this['created_at'],
-		  	 $this['updated_at']
+		  	 $this['updated_at'],
+			$this['words_list']
   	);
   }
 }

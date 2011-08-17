@@ -91,3 +91,18 @@ WordCitation:
     collate: utf8_unicode_ci
     charset: utf8
     
+Ads:
+  tableName: ads
+  actAs:
+    Timestampable:
+  columns:
+    title: {type: string(255)}
+    code: clob
+    position: {type: int}
+    is_active: {type: int}
+
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+    
+    

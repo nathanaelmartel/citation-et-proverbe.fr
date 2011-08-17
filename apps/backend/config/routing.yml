@@ -1,3 +1,12 @@
+ads:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Ads
+    module:               ads
+    prefix_path:          /ads
+    column:               id
+    with_wildcard_routes: true
+
 word:
   class: sfDoctrineRouteCollection
   options:

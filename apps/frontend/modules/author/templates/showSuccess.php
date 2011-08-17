@@ -1,10 +1,21 @@
+
+  	<div class="adsense adsense-728">
+			<?php foreach(AdsTable::getActivesByPosition(9) as $ads): ?>
+				<?php echo $ads->getCode('ESC') ?>
+			<?php endforeach; ?>
+		</div>
+
 <h1>Citations de <?php echo $author->getAuthor() ?></h1>
 
 <?php foreach($citations as $citation): ?>
   <?php include_partial('citation/citation', array('citation' => $citation)) ?>
   
   <?php if($i++%5 == 1): ?>
-  	<?php include_partial('citation/adsense728') ?>
+  	<div class="adsense adsense-728">
+			<?php foreach(AdsTable::getActivesByPosition(10) as $ads): ?>
+				<?php echo $ads->getCode('ESC') ?>
+			<?php endforeach; ?>
+		</div>
   <?php endif; ?>
   
 <?php endforeach; ?>
@@ -22,3 +33,12 @@
 		<?php endforeach ?>
 	</div>    
 <?php endif ?>
+
+
+
+      
+		<div id="amazon-search" >
+			<?php foreach(AdsTable::getActivesByPosition(8) as $ads): ?>
+				<?php echo $ads->getCode('ESC') ?>
+			<?php endforeach; ?>
+		</div>

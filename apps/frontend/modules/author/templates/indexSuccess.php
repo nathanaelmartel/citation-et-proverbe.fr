@@ -1,5 +1,13 @@
-<!-- google_ad_section_start -->
+    
+		<div class="adsense adsense-728">
+			<?php foreach(AdsTable::getActivesByPosition(11) as $ads): ?>
+				<?php echo $ads->getCode('ESC') ?>
+			<?php endforeach; ?>
+		</div>
 
+
+<!-- google_ad_section_start -->
+ 
 <h1>Auteurs de Citations</h1>
 
 <h2>Top 10 des auteurs de citations</h2>
@@ -32,3 +40,10 @@
 
 <!-- google_ad_section_end -->
 
+
+      
+		<div id="amazon-search" >
+			<?php foreach(AdsTable::getActivesByPosition(12) as $ads): ?>
+				<?php echo $ads->getCode('ESC') ?>
+			<?php endforeach; ?>
+		</div>

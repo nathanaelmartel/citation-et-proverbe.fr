@@ -1,3 +1,11 @@
+    
+		<div class="adsense adsense-728">
+			<?php foreach(AdsTable::getActivesByPosition(6) as $ads): ?>
+				<?php echo $ads->getCode('ESC') ?>
+			<?php endforeach; ?>
+		</div>
+
+
 <!-- google_ad_section_start -->
 
 <h1>Thèmes de Citations</h1>
@@ -31,3 +39,11 @@
 <div class="clear"></div>
 
 <!-- google_ad_section_end -->
+
+      
+		<div id="amazon-search" >
+			<?php foreach(AdsTable::getActivesByPosition(7) as $ads): ?>
+				<?php echo $ads->getCode('ESC') ?>
+			<?php endforeach; ?>
+		</div>
+		
