@@ -52,13 +52,11 @@ EOF;
 		    	$auteur =  $citation->author ;
 	    }
 	
-    $message_text = '<p>Bonjour, <br />
+    $message_text = '<p>Bonjour, <br />Voici la citation du jour : </p>
 
-						<p>'.$citation->quote.''.$auteur.'</p>
+						<p style="background-color: #FFFFFF;border-radius: 10px 10px 10px 10px;box-shadow: 0 5px 20px #B3BEC7;font-size: 200%;margin: 20px;padding: 20px;">'.$citation->quote.''.$auteur.'</p>
 						
-						<p>Citations<br />
-						<a href="http://www.citation-et-proverbe.fr?utm_source=mail&utm_medium=mail&utm_campaign=mail">http://www.citation-et-proverbe.fr</a>
-						</p>';
+						<p>Retrouvez d\'autre citations sur <a href="http://www.citation-et-proverbe.fr?utm_source=mail&utm_medium=mail&utm_campaign=mail">www.citation-et-proverbe.fr</a></p>';
 
     echo "\n";
     echo "message: \n";
