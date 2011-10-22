@@ -13,3 +13,10 @@ all:
     email_bcc: []
     
   pager: 20
+  
+  newsletter:
+    mail_subject_newsletter: "Confirmation de votre abonnement à la citation quotidienne"
+    mail_subject_mauro: "citation -- Nouvelle inscription"
+    mail_from: contact@citation-et-proverbe.fr
+    mail_to: contact@citation-et-proverbe.fr
+      

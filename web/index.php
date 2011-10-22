@@ -5,9 +5,9 @@
 require_once(dirname(__FILE__).'/../config/ProjectConfiguration.class.php');
 
 $application = 'frontend';
+$env = 'prod';
 
-
-if ($_SERVER[HTTP_HOST] == 'admin.citation-et-proverbe.fr')
+if ($_SERVER['HTTP_HOST'] == 'admin.citation-et-proverbe.fr')
 {
 
   /* authentification pour tests */
@@ -39,5 +39,9 @@ if ($_SERVER[HTTP_HOST] == 'admin.citation-et-proverbe.fr')
 	$application = 'backend';
 }
 
-$configuration = ProjectConfiguration::getApplicationConfiguration($application, 'prod', false);
+if ($_SERVER['HTTP_HOST'] == 'www.citation-et-proverbe.fr.dev') {
+	$env = 'dev';
+}
+
+$configuration = ProjectConfiguration::getApplicationConfiguration($application, $env, $env != prod);
 sfContext::createInstance($configuration)->dispatch();

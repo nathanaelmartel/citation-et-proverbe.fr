@@ -2,6 +2,14 @@
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
 
+newsletter:
+  url: /abonnement
+  param: { module: newsletter, action: new }
+  
+newsletter_confirmation:
+  url: /abonnement/confirmation/:code
+  param: { module: newsletter, action: confirmation }
+  
 word:
   url:   /theme/:slug
   param: { module: word, action: show }

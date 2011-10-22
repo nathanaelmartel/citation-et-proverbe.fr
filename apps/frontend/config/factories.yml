@@ -8,6 +8,7 @@ prod:
       level:   err
       loggers: ~
 
+
 test:
   storage:
     class: sfSessionTestStorage
@@ -24,9 +25,6 @@ test:
       delivery_strategy: none
 
 dev:
-  mailer:
-    param:
-      delivery_strategy: none
 
 all:
   routing:
@@ -40,3 +38,20 @@ all:
     param:
       cache_key_use_vary_headers: true
       cache_key_use_host_name:    true
+
+      
+  mailer:
+    class: sfMailer
+    param:
+      logging:           %SF_LOGGING_ENABLED%
+      charset:           %SF_CHARSET%
+      delivery_strategy: realtime
+      transport:
+        class: Swift_SmtpTransport
+        param:
+          host:       smtp.validname.com
+          port:       25
+          encryption: ~
+          username:   contact@citation-et-proverbe.fr
+          password:   u@amabevumazu
+          
