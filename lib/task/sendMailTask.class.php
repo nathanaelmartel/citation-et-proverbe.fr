@@ -79,6 +79,7 @@ EOF;
     		'citation du jour',
     		$message_text
     	);
+    $message->setContentType("text/html");
     	$this->getMailer()->send($message);
 		echo $newsletter->getEmail()."\n";
     }
