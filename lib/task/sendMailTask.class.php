@@ -68,17 +68,22 @@ EOF;
     	->createQuery('a')
         ->where('is_confirmed = ?', 1)
         ->execute();
+ 
     
+    /*
+    $connection = new Swift_Connection_SMTP('smtp.validname.com', 25);
+    $connection->setUsername('contact@citation-et-proverbe.fr');
+    $connection->setPassword('u@amabevumazu');
+    */
     
     foreach ($newsletters as $newsletter) {
-    	$message = $this->getMailer()->compose(
-    		'contact@citation-et-proverbe.fr',
-    		$newsletter->getEmail(),
-    		'citation du jour',
-    		$message_text
-    	);
-    $message->setContentType("text/html");
-    	$this->getMailer()->send($message);
+	  	$message = $this->getMailer()->compose(
+	      'contact@citation-et-proverbe.fr',
+	      $newsletter->getEmail(),
+	      'citation du jour',
+	  	  $message_text
+	    );
+		$this->getMailer()->send($message);
 		echo $newsletter->getEmail()."\n";
     }
     echo "\n";
