@@ -1,0 +1,23 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           CategoryExpression
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          category_expression
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:   
+          display: [=name, category_id]
+          sort: [name, asc]
+      filter:  ~
+      form:    ~
+      edit:    ~
+      new:     ~

@@ -28,6 +28,7 @@ abstract class BaseCitationForm extends BaseFormDoctrine
       'created_at'               => new sfWidgetFormDateTime(),
       'updated_at'               => new sfWidgetFormDateTime(),
       'words_list'               => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Word')),
+      'categories_list'          => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Category')),
     ));
 
     $this->setValidators(array(
@@ -44,6 +45,7 @@ abstract class BaseCitationForm extends BaseFormDoctrine
       'created_at'               => new sfValidatorDateTime(),
       'updated_at'               => new sfValidatorDateTime(),
       'words_list'               => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Word', 'required' => false)),
+      'categories_list'          => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Category', 'required' => false)),
     ));
 
     $this->validatorSchema->setPostValidator(
@@ -73,11 +75,17 @@ abstract class BaseCitationForm extends BaseFormDoctrine
       $this->setDefault('words_list', $this->object->Words->getPrimaryKeys());
     }
 
+    if (isset($this->widgetSchema['categories_list']))
+    {
+      $this->setDefault('categories_list', $this->object->Categories->getPrimaryKeys());
+    }
+
   }
 
   protected function doSave($con = null)
   {
     $this->saveWordsList($con);
+    $this->saveCategoriesList($con);
 
     parent::doSave($con);
   }
@@ -117,6 +125,44 @@ abstract class BaseCitationForm extends BaseFormDoctrine
     if (count($link))
     {
       $this->object->link('Words', array_values($link));
+    }
+  }
+
+  public function saveCategoriesList($con = null)
+  {
+    if (!$this->isValid())
+    {
+      throw $this->getErrorSchema();
+    }
+
+    if (!isset($this->widgetSchema['categories_list']))
+    {
+      // somebody has unset this widget
+      return;
+    }
+
+    if (null === $con)
+    {
+      $con = $this->getConnection();
+    }
+
+    $existing = $this->object->Categories->getPrimaryKeys();
+    $values = $this->getValue('categories_list');
+    if (!is_array($values))
+    {
+      $values = array();
+    }
+
+    $unlink = array_diff($existing, $values);
+    if (count($unlink))
+    {
+      $this->object->unlink('Categories', array_values($unlink));
+    }
+
+    $link = array_diff($values, $existing);
+    if (count($link))
+    {
+      $this->object->link('Categories', array_values($link));
     }
   }
 

@@ -3,3 +3,22 @@
 
 # default values
 #all:
+
+all:
+  Tools:
+    cookie_name: citation-et-proverbe
+
+  Contact:
+    email_subject: '[citation-et-proverbe] Formulaire de contact'
+    email_from: contact@citation-et-proverbe.fr
+    email_to: contact@citation-et-proverbe.fr
+    email_bcc: []
+    
+  pager: 20
+  
+  newsletter:
+    mail_subject_newsletter: "Confirmation de votre abonnement à la citation quotidienne"
+    mail_subject_mauro: "citation -- Nouvelle inscription"
+    mail_from: contact@citation-et-proverbe.fr
+    mail_to: contact@citation-et-proverbe.fr
+      

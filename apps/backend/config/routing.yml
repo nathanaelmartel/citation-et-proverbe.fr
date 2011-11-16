@@ -1,3 +1,21 @@
+category_expression:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                CategoryExpression
+    module:               category_expression
+    prefix_path:          /category_expression
+    column:               category_id
+    with_wildcard_routes: true
+
+category:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Category
+    module:               category
+    prefix_path:          /category
+    column:               id
+    with_wildcard_routes: true
+
 ads:
   class: sfDoctrineRouteCollection
   options:

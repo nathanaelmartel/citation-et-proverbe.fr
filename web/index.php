@@ -37,10 +37,20 @@ if ($_SERVER['HTTP_HOST'] == 'admin.citation-et-proverbe.fr')
   /* fin authentification pour tests */
 
 	$application = 'backend';
+} 
+
+$subdomaine = substr($_SERVER['HTTP_HOST'], 0, strpos($_SERVER['HTTP_HOST'], '.'));
+if (($subdomaine != 'www') && ($subdomaine != 'admin')) {
+	$application = 'themes';
 }
 
-if ($_SERVER['HTTP_HOST'] == 'www.citation-et-proverbe.fr.dev') {
+$enddomaine = substr($_SERVER['HTTP_HOST'], strrpos($_SERVER['HTTP_HOST'], '.')+1);
+
+if ($enddomaine == 'dev') {
 	$env = 'dev';
+}
+if ($subdomaine == 'admin') {
+	$application = 'backend';
 }
 
 $configuration = ProjectConfiguration::getApplicationConfiguration($application, $env, $env != prod);
