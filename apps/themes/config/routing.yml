@@ -2,35 +2,6 @@
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
 
-newsletter:
-  url: /abonnement
-  param: { module: newsletter, action: new }
-  
-newsletter_confirmation:
-  url: /abonnement/confirmation/:code
-  param: { module: newsletter, action: confirmation }
-  
-word:
-  url:   /theme/:slug
-  param: { module: word, action: show }
-
-word_old:
-  url:   /mot/:slug
-  param: { module: word, action: show }
-  
-words:
-  url:   /themes
-  param: { module: word, action: index }
-
-contact:
-  url:   /contact
-  param: { module: contact, action: index }
-  requirements: { sf_method: [get] } 
-
-contact_validation:
-  url:   /contact/
-  param: { module: contact, action: create }
-  requirements: { sf_method: [post, put] } 
 
 author:
   url:   /auteur/:slug
@@ -66,5 +37,5 @@ sincle_citation2:
 
 homepage:
   url:   /
-  param: { module: citation, action: last }
+  param: { module: citation, action: theme }
 

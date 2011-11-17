@@ -1,5 +1,5 @@
 
 
     <footer> 
-      <a href="<?php echo url_for('@contact')?>">Contact</a>
+      <a href="http://www.citation-et-proverbe.fr/contact">Contact</a>
     </footer>
