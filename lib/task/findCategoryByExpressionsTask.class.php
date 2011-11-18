@@ -33,7 +33,7 @@ EOF;
     $databaseManager = new sfDatabaseManager($this->configuration);
     $connection = $databaseManager->getDatabase($options['connection'])->getConnection();
 
-    $category_id = 2;
+    $category_id = 3;
     $q = Doctrine_Query::create()
     ->select('*')
     ->from('Category')

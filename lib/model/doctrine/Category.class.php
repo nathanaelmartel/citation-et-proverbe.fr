@@ -19,6 +19,12 @@ class Category extends BaseCategory
 	
 	public function getCountExpressions()
 	{
-		return $this->Expressions->count();
+	    $expressions = Doctrine_Query::create()
+		    ->select('*')
+		    ->from('CategoryExpression')
+		    ->where('category_id = ?', $this->id)
+		    ->execute();
+	    
+		return count($expressions);
 	}
 }
