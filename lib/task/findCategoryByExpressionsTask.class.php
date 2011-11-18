@@ -36,10 +36,13 @@ EOF;
     $category_id = 3;
     $q = Doctrine_Query::create()
     ->select('*')
-    ->from('Category')
-    ->where('id = ?', $category_id);
+    ->from('Category');
 	$Categories = $q->execute();
-	$Category = $Categories[0];
+	
+	foreach ($Category as $Categories) {
+		
+    echo "*****************************************************\n";
+    echo "******* ".$Categories->name."\n";
     /*
     $q = Doctrine_Query::create()
 	    ->select('*')
@@ -64,16 +67,17 @@ EOF;
 	    $q = Doctrine_Query::create()
 	    ->select('*')
 	    ->from('Citation c')
-	    ->Where('concat( author, \' \', quote ) LIKE ?', '%'.$Category->name.'%');
+	    ->Where('concat( author, \' \', quote ) LIKE ?', '%'.$Category->name.' %');
 	    
 	    foreach ($words as $word) {
-	    	$q->addWhere('concat( author, \' \', quote ) LIKE ?', '%'.$word.'%');
+	    	$q->addWhere('concat( author, \' \', quote ) LIKE ?', '%'.$word.' %');
 	    }
 	    
 	    //echo $q->getSqlQuery();echo "\n";
 	    //$citations = $q->execute();
 	    
 	    $this->addCitations($q->execute(), $Category);
+	}
 	}
     echo "\n";
   }
@@ -93,6 +97,7 @@ EOF;
 	    		$category_citation->citation_id = $citation->id;
 	    		$category_citation->category_id = $Category->id;
 	    		$category_citation->save();
+	    		echo ".";
 	    	}
 	    }
   	
