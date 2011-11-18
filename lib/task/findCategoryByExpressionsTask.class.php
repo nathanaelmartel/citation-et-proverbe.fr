@@ -33,42 +33,52 @@ EOF;
     $databaseManager = new sfDatabaseManager($this->configuration);
     $connection = $databaseManager->getDatabase($options['connection'])->getConnection();
 
-    $category_id = 1;
+    $category_id = 2;
     $q = Doctrine_Query::create()
     ->select('*')
     ->from('Category')
     ->where('id = ?', $category_id);
 	$Categories = $q->execute();
 	$Category = $Categories[0];
+    /*
+    $q = Doctrine_Query::create()
+	    ->select('*')
+	    ->from('Citation c')
+	    ->Where('concat( author, \' \', quote ) LIKE ?', '%'.$Category->name.'%');
     
-    // add your code here
+    //echo $q->getSqlQuery();echo "\n";
+	$this->addCitations($q->execute(), $Category);
+    */
+	
     $q = Doctrine_Query::create()
     ->select('*')
     ->from('CategoryExpression')
     ->where('category_id = ?', $Category->id)
     //->limit(10)
     ;
-    
-    
-    //echo $q->getSqlQuery();echo "\n";
-	$expressions = $q->execute();
 	
-	foreach ($expressions as $Expression) {
+	foreach ($q->execute() as $Expression) {
 		echo $Expression->name;echo "\n";
 		$words = split(' ', $Expression->name);
 		
 	    $q = Doctrine_Query::create()
 	    ->select('*')
 	    ->from('Citation c')
-	    ->Where('quote LIKE ?', '%'.$Category->name.'%');
+	    ->Where('concat( author, \' \', quote ) LIKE ?', '%'.$Category->name.'%');
 	    
 	    foreach ($words as $word) {
-	    	$q->addWhere('quote LIKE ?', '%'.$word.'%');
+	    	$q->addWhere('concat( author, \' \', quote ) LIKE ?', '%'.$word.'%');
 	    }
 	    
 	    //echo $q->getSqlQuery();echo "\n";
-	    $citations = $q->execute();
-	    $citations = $q->execute();
+	    //$citations = $q->execute();
+	    
+	    $this->addCitations($q->execute(), $Category);
+	}
+    echo "\n";
+  }
+  
+  private function addCitations($citations, $Category) {
 	    
 	    foreach ($citations as $citation) 
 	    {
@@ -85,7 +95,6 @@ EOF;
 	    		$category_citation->save();
 	    	}
 	    }
-	}
-    echo "\n";
+  	
   }
 }
