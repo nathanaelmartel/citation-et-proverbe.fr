@@ -39,10 +39,10 @@ EOF;
     ->from('Category');
 	$Categories = $q->execute();
 	
-	foreach ($Category as $Categories) {
+	foreach ($Categories as $Category) {
 		
     echo "*****************************************************\n";
-    echo "******* ".$Categories->name."\n";
+    echo "******* ".$Category->name."\n";
     /*
     $q = Doctrine_Query::create()
 	    ->select('*')
