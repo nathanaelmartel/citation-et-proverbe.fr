@@ -136,10 +136,6 @@ Category:
     is_active: {type: int}
     
   relations:
-    Citations:
-      class: Citation
-      refClass: CategoryCitation
-      foreignAlias: Categories
     Expressions:
       class: CategoryExpression
       local: id
@@ -148,29 +144,38 @@ Category:
   options:
     collate: utf8_unicode_ci
     charset: utf8
+
+    
+CategoryExpression:    
+  tableName: category_expression
+  actAs:
+    Sluggable:
+      unique: true
+      fields: [name]
+
+  columns:
+    category_id: {type: integer}
+    name: { type: string(255), notnull: true }
+  relations:
+    Citations:
+      class: Citation
+      refClass: CategoryCitation
+      foreignAlias: CategoriesExpression
+
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+
     
 CategoryCitation:    
   tableName: category_citation
 
   columns:
-    category_id: {type: integer, primary: true}
+    category_expression_id: {type: integer, primary: true}
     citation_id: {type: integer, primary: true}
 
   options:
     collate: utf8_unicode_ci
     charset: utf8
-
-    
-CategoryExpression:    
-  tableName: category_expression
-
-  columns:
-    category_id: {type: integer}
-    name: { type: string(255), notnull: true }
-
-  options:
-    collate: utf8_unicode_ci
-    charset: utf8
-
     
     

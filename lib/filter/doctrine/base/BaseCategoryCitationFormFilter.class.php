@@ -35,8 +35,8 @@ abstract class BaseCategoryCitationFormFilter extends BaseFormFilterDoctrine
   public function getFields()
   {
     return array(
-      'category_id' => 'Number',
-      'citation_id' => 'Number',
+      'category_expression_id' => 'Number',
+      'citation_id'            => 'Number',
     );
   }
 }

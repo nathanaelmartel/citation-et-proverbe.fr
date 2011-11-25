@@ -71,14 +71,11 @@ class citationActions extends sfActions
     
     //$this->citations = $word->getCitations();
     
-    $this->citations = new sfDoctrinePager('Citation', sfConfig::get('app_pager'));
-	$this->citations->setQuery(Doctrine_Query::create()
+    $this->Expressions = Doctrine_Query::create()
 	      ->select()
-	      ->from('Citation c')
-	      ->leftJoin('c.CategoryCitation cc')
-	      ->AddWhere('cc.category_id = ?', $this->Category->getId()));
-	$this->citations->setPage($request->getParameter('page', 1));
-	$this->citations->init();
+	      ->from('CategoryExpression')
+	      ->AddWhere('category_id = ?', $this->Category->getId())
+    	  ->execute();
   }
   
   public function executeShow(sfWebRequest $request)
@@ -98,20 +95,20 @@ class citationActions extends sfActions
   public function executeSitemap(sfWebRequest $request)
   {
   	$page = $request->getParameter('page', 0);
-  	$nb = 25;
+  	$nb = 100;
   	
-    $this->authors = Doctrine::getTable('Author')
-      ->createQuery('a')
-      ->where('is_active = ?', 1)
-      ->limit($nb/2)
-      ->offset($nb/2*$page)
-      ->execute();
+    $this->Expressions = Doctrine_Query::create()
+	      ->select()
+	      ->from('CategoryExpression')
+	      ->AddWhere('category_id = ?', $this->Category->getId())
+        ->limit($nb)
+        ->offset($nb*$page)
+    	  ->execute();
   	$this->citations = Doctrine_Query::create()
 	  	->select()
-	  	->from('Citation c')
+	    ->from('CategoryExpression c')
 	  	->leftJoin('c.CategoryCitation cc')
-        ->where('is_active = ?', 1)
-	  	->AddWhere('cc.category_id = ?', $this->Category->getId())
+	  	->AddWhere('c.category_id = ?', $this->Category->getId())
         ->limit($nb)
         ->offset($nb*$page)
 	  	->execute();

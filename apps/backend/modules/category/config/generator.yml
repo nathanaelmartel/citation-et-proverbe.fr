@@ -15,7 +15,7 @@ generator:
       actions: ~
       fields:  ~
       list:
-          display: [=name, count_citations, count_expressions, slug, is_active]
+          display: [=name, count_expressions, slug, is_active]
           sort: [name, asc]
       filter:  
           display: [name, slug, is_active]

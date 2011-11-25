@@ -16,7 +16,7 @@ Doctrine_Manager::getInstance()->bindComponent('Citation', 'doctrine');
  * @property datetime $author_last_published_at
  * @property string $hash
  * @property Doctrine_Collection $Words
- * @property Doctrine_Collection $Categories
+ * @property Doctrine_Collection $CategoriesExpression
  * 
  * @method string              getQuote()                    Returns the current record's "quote" value
  * @method string              getAuthor()                   Returns the current record's "author" value
@@ -27,7 +27,7 @@ Doctrine_Manager::getInstance()->bindComponent('Citation', 'doctrine');
  * @method datetime            getAuthorLastPublishedAt()    Returns the current record's "author_last_published_at" value
  * @method string              getHash()                     Returns the current record's "hash" value
  * @method Doctrine_Collection getWords()                    Returns the current record's "Words" collection
- * @method Doctrine_Collection getCategories()               Returns the current record's "Categories" collection
+ * @method Doctrine_Collection getCategoriesExpression()     Returns the current record's "CategoriesExpression" collection
  * @method Citation            setQuote()                    Sets the current record's "quote" value
  * @method Citation            setAuthor()                   Sets the current record's "author" value
  * @method Citation            setSource()                   Sets the current record's "source" value
@@ -37,7 +37,7 @@ Doctrine_Manager::getInstance()->bindComponent('Citation', 'doctrine');
  * @method Citation            setAuthorLastPublishedAt()    Sets the current record's "author_last_published_at" value
  * @method Citation            setHash()                     Sets the current record's "hash" value
  * @method Citation            setWords()                    Sets the current record's "Words" collection
- * @method Citation            setCategories()               Sets the current record's "Categories" collection
+ * @method Citation            setCategoriesExpression()     Sets the current record's "CategoriesExpression" collection
  * 
  * @package    citations
  * @subpackage model
@@ -88,10 +88,10 @@ abstract class BaseCitation extends sfDoctrineRecord
              'local' => 'citation_id',
              'foreign' => 'word_id'));
 
-        $this->hasMany('Category as Categories', array(
+        $this->hasMany('CategoryExpression as CategoriesExpression', array(
              'refClass' => 'CategoryCitation',
              'local' => 'citation_id',
-             'foreign' => 'category_id'));
+             'foreign' => 'category_expression_id'));
 
         $sluggable0 = new Doctrine_Template_Sluggable(array(
              'unique' => true,

@@ -12,19 +12,15 @@
  */
 class Category extends BaseCategory
 {
-	public function getCountCitations()
-	{
-		return $this->Citations->count();
-	}
 	
 	public function getCountExpressions()
 	{
-	    $expressions = Doctrine_Query::create()
-		    ->select('*')
-		    ->from('CategoryExpression')
-		    ->where('category_id = ?', $this->id)
-		    ->execute();
-	    
+		$expressions = Doctrine_Query::create()
+		->select('*')
+		->from('CategoryExpression')
+				    ->where('category_id = ?', $this->id)
+		->execute();
+		 
 		return count($expressions);
 	}
 }

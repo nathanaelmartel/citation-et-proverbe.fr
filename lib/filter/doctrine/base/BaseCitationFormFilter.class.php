@@ -13,35 +13,35 @@ abstract class BaseCitationFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'quote'                    => new sfWidgetFormFilterInput(),
-      'author'                   => new sfWidgetFormFilterInput(),
-      'source'                   => new sfWidgetFormFilterInput(),
-      'website'                  => new sfWidgetFormFilterInput(),
-      'is_active'                => new sfWidgetFormFilterInput(),
-      'last_published_at'        => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
-      'author_last_published_at' => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
-      'hash'                     => new sfWidgetFormFilterInput(),
-      'slug'                     => new sfWidgetFormFilterInput(),
-      'created_at'               => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
-      'updated_at'               => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
-      'words_list'               => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Word')),
-      'categories_list'          => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Category')),
+      'quote'                      => new sfWidgetFormFilterInput(),
+      'author'                     => new sfWidgetFormFilterInput(),
+      'source'                     => new sfWidgetFormFilterInput(),
+      'website'                    => new sfWidgetFormFilterInput(),
+      'is_active'                  => new sfWidgetFormFilterInput(),
+      'last_published_at'          => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
+      'author_last_published_at'   => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
+      'hash'                       => new sfWidgetFormFilterInput(),
+      'slug'                       => new sfWidgetFormFilterInput(),
+      'created_at'                 => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
+      'updated_at'                 => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
+      'words_list'                 => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Word')),
+      'categories_expression_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'CategoryExpression')),
     ));
 
     $this->setValidators(array(
-      'quote'                    => new sfValidatorPass(array('required' => false)),
-      'author'                   => new sfValidatorPass(array('required' => false)),
-      'source'                   => new sfValidatorPass(array('required' => false)),
-      'website'                  => new sfValidatorPass(array('required' => false)),
-      'is_active'                => new sfValidatorPass(array('required' => false)),
-      'last_published_at'        => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
-      'author_last_published_at' => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
-      'hash'                     => new sfValidatorPass(array('required' => false)),
-      'slug'                     => new sfValidatorPass(array('required' => false)),
-      'created_at'               => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
-      'updated_at'               => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
-      'words_list'               => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Word', 'required' => false)),
-      'categories_list'          => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Category', 'required' => false)),
+      'quote'                      => new sfValidatorPass(array('required' => false)),
+      'author'                     => new sfValidatorPass(array('required' => false)),
+      'source'                     => new sfValidatorPass(array('required' => false)),
+      'website'                    => new sfValidatorPass(array('required' => false)),
+      'is_active'                  => new sfValidatorPass(array('required' => false)),
+      'last_published_at'          => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
+      'author_last_published_at'   => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
+      'hash'                       => new sfValidatorPass(array('required' => false)),
+      'slug'                       => new sfValidatorPass(array('required' => false)),
+      'created_at'                 => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
+      'updated_at'                 => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
+      'words_list'                 => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Word', 'required' => false)),
+      'categories_expression_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'CategoryExpression', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('citation_filters[%s]');
@@ -71,7 +71,7 @@ abstract class BaseCitationFormFilter extends BaseFormFilterDoctrine
     ;
   }
 
-  public function addCategoriesListColumnQuery(Doctrine_Query $query, $field, $values)
+  public function addCategoriesExpressionListColumnQuery(Doctrine_Query $query, $field, $values)
   {
     if (!is_array($values))
     {
@@ -85,7 +85,7 @@ abstract class BaseCitationFormFilter extends BaseFormFilterDoctrine
 
     $query
       ->leftJoin($query->getRootAlias().'.CategoryCitation CategoryCitation')
-      ->andWhereIn('CategoryCitation.category_id', $values)
+      ->andWhereIn('CategoryCitation.category_expression_id', $values)
     ;
   }
 
@@ -97,20 +97,20 @@ abstract class BaseCitationFormFilter extends BaseFormFilterDoctrine
   public function getFields()
   {
     return array(
-      'id'                       => 'Number',
-      'quote'                    => 'Text',
-      'author'                   => 'Text',
-      'source'                   => 'Text',
-      'website'                  => 'Text',
-      'is_active'                => 'Text',
-      'last_published_at'        => 'Date',
-      'author_last_published_at' => 'Date',
-      'hash'                     => 'Text',
-      'slug'                     => 'Text',
-      'created_at'               => 'Date',
-      'updated_at'               => 'Date',
-      'words_list'               => 'ManyKey',
-      'categories_list'          => 'ManyKey',
+      'id'                         => 'Number',
+      'quote'                      => 'Text',
+      'author'                     => 'Text',
+      'source'                     => 'Text',
+      'website'                    => 'Text',
+      'is_active'                  => 'Text',
+      'last_published_at'          => 'Date',
+      'author_last_published_at'   => 'Date',
+      'hash'                       => 'Text',
+      'slug'                       => 'Text',
+      'created_at'                 => 'Date',
+      'updated_at'                 => 'Date',
+      'words_list'                 => 'ManyKey',
+      'categories_expression_list' => 'ManyKey',
     );
   }
 }

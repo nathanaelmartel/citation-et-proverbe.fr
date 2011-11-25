@@ -43,6 +43,22 @@ EOF;
 		
     echo "*****************************************************\n";
     echo "******* ".$Category->name."\n";
+    
+    /* load keywords */
+    $keyword_file = 'data/keywords/'.$Category->slug.'.txt';
+    if (file_exists($keyword_file)) {
+	    echo 'load keywords';
+	    $lines = file($keyword_file);
+	    foreach($lines as $line) {
+	    	$line = rtrim($line, "\r\n");
+			$line = trim($line);
+		    if ($line != '') {
+		    	$this->addExpression($line, $Category);
+		    }
+	    }
+	    echo "\n";
+    }
+    
     /*
     $q = Doctrine_Query::create()
 	    ->select('*')
@@ -61,7 +77,7 @@ EOF;
     ;
 	
 	foreach ($q->execute() as $Expression) {
-		echo $Expression->name;echo "\n";
+		echo $Expression->name;
 		$words = split(' ', $Expression->name);
 		
 	    $q = Doctrine_Query::create()
@@ -76,30 +92,48 @@ EOF;
 	    //echo $q->getSqlQuery();echo "\n";
 	    //$citations = $q->execute();
 	    
-	    $this->addCitations($q->execute(), $Category);
+	    $this->addCitations($q->execute(), $Expression);
+	    echo "\n";
 	}
+	
+	
 	}
     echo "\n";
   }
   
-  private function addCitations($citations, $Category) {
+  private function addCitations($citations, $Expression) {
 	    
 	    foreach ($citations as $citation) 
 	    {
 	    	//print_r($citation->getWords());
 	    	//echo $citation->id."\n";
-	    	//echo $Category->id."\n";
+	    	//echo $Expression->id."\n";
 	    	
-	    	$CategoryCitations = Doctrine::getTable('CategoryCitation')->findByCategoryIdAndCitationId($Category->id, $citation->id);
+	    	$CategoryCitations = Doctrine::getTable('CategoryCitation')->findByCategoryExpressionIdAndCitationId($Expression->id, $citation->id);
 	    	if (count($CategoryCitations) == 0)
 	    	{
 	    		$category_citation = new CategoryCitation;
 	    		$category_citation->citation_id = $citation->id;
-	    		$category_citation->category_id = $Category->id;
+	    		$category_citation->category_expression_id = $Expression->id;
 	    		$category_citation->save();
 	    		echo ".";
 	    	}
 	    }
+  	
+  }
+  
+  private function addExpression($expression, $Category) {
+	    
+	    	
+	    	$CategoryExpression = Doctrine::getTable('CategoryExpression')->findByCategoryIdAndName($Category->id, $expression);
+	    	if (count($CategoryExpression) == 0)
+	    	{
+	    		$category_expression = new CategoryExpression;
+	    		$category_expression->name = $expression;
+	    		$category_expression->category_id = $Category->id;
+	    		$category_expression->save();
+	    		echo ".";
+	    	}
   	
   }
 }

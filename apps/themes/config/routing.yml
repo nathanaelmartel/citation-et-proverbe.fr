@@ -3,6 +3,10 @@
 
 
 
+theme:
+  url:   /theme/:slug
+  param: { module: theme, action: index }
+  
 author:
   url:   /auteur/:slug
   param: { module: author, action: show }

@@ -15,9 +15,10 @@ generator:
       actions: ~
       fields:  ~
       list:   
-          display: [=name, category_id]
+          display: [=name, count_citations, slug, category_name]
           sort: [name, asc]
-      filter:  ~
+      filter:  
+          display: [name, slug, category_id]
       form:    ~
       edit:    ~
       new:     ~

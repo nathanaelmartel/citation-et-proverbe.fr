@@ -15,13 +15,13 @@ abstract class BaseCategoryCitationForm extends BaseFormDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'category_id' => new sfWidgetFormInputHidden(),
-      'citation_id' => new sfWidgetFormInputHidden(),
+      'category_expression_id' => new sfWidgetFormInputHidden(),
+      'citation_id'            => new sfWidgetFormInputHidden(),
     ));
 
     $this->setValidators(array(
-      'category_id' => new sfValidatorChoice(array('choices' => array($this->getObject()->get('category_id')), 'empty_value' => $this->getObject()->get('category_id'), 'required' => false)),
-      'citation_id' => new sfValidatorChoice(array('choices' => array($this->getObject()->get('citation_id')), 'empty_value' => $this->getObject()->get('citation_id'), 'required' => false)),
+      'category_expression_id' => new sfValidatorChoice(array('choices' => array($this->getObject()->get('category_expression_id')), 'empty_value' => $this->getObject()->get('category_expression_id'), 'required' => false)),
+      'citation_id'            => new sfValidatorChoice(array('choices' => array($this->getObject()->get('citation_id')), 'empty_value' => $this->getObject()->get('citation_id'), 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('category_citation[%s]');

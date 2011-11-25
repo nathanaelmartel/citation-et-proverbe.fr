@@ -7,17 +7,14 @@
  * 
  * @property string $name
  * @property int $is_active
- * @property Doctrine_Collection $Citations
  * @property CategoryExpression $Expressions
  * 
- * @method string              getName()        Returns the current record's "name" value
- * @method int                 getIsActive()    Returns the current record's "is_active" value
- * @method Doctrine_Collection getCitations()   Returns the current record's "Citations" collection
- * @method CategoryExpression  getExpressions() Returns the current record's "Expressions" value
- * @method Category            setName()        Sets the current record's "name" value
- * @method Category            setIsActive()    Sets the current record's "is_active" value
- * @method Category            setCitations()   Sets the current record's "Citations" collection
- * @method Category            setExpressions() Sets the current record's "Expressions" value
+ * @method string             getName()        Returns the current record's "name" value
+ * @method int                getIsActive()    Returns the current record's "is_active" value
+ * @method CategoryExpression getExpressions() Returns the current record's "Expressions" value
+ * @method Category           setName()        Sets the current record's "name" value
+ * @method Category           setIsActive()    Sets the current record's "is_active" value
+ * @method Category           setExpressions() Sets the current record's "Expressions" value
  * 
  * @package    citations
  * @subpackage model
@@ -45,11 +42,6 @@ abstract class BaseCategory extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasMany('Citation as Citations', array(
-             'refClass' => 'CategoryCitation',
-             'local' => 'category_id',
-             'foreign' => 'citation_id'));
-
         $this->hasOne('CategoryExpression as Expressions', array(
              'local' => 'id',
              'foreign' => 'category_id'));

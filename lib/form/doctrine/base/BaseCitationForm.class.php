@@ -15,37 +15,37 @@ abstract class BaseCitationForm extends BaseFormDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'id'                       => new sfWidgetFormInputHidden(),
-      'quote'                    => new sfWidgetFormTextarea(),
-      'author'                   => new sfWidgetFormInputText(),
-      'source'                   => new sfWidgetFormInputText(),
-      'website'                  => new sfWidgetFormInputText(),
-      'is_active'                => new sfWidgetFormInputText(),
-      'last_published_at'        => new sfWidgetFormInputText(),
-      'author_last_published_at' => new sfWidgetFormInputText(),
-      'hash'                     => new sfWidgetFormInputText(),
-      'slug'                     => new sfWidgetFormInputText(),
-      'created_at'               => new sfWidgetFormDateTime(),
-      'updated_at'               => new sfWidgetFormDateTime(),
-      'words_list'               => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Word')),
-      'categories_list'          => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Category')),
+      'id'                         => new sfWidgetFormInputHidden(),
+      'quote'                      => new sfWidgetFormTextarea(),
+      'author'                     => new sfWidgetFormInputText(),
+      'source'                     => new sfWidgetFormInputText(),
+      'website'                    => new sfWidgetFormInputText(),
+      'is_active'                  => new sfWidgetFormInputText(),
+      'last_published_at'          => new sfWidgetFormInputText(),
+      'author_last_published_at'   => new sfWidgetFormInputText(),
+      'hash'                       => new sfWidgetFormInputText(),
+      'slug'                       => new sfWidgetFormInputText(),
+      'created_at'                 => new sfWidgetFormDateTime(),
+      'updated_at'                 => new sfWidgetFormDateTime(),
+      'words_list'                 => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Word')),
+      'categories_expression_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'CategoryExpression')),
     ));
 
     $this->setValidators(array(
-      'id'                       => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'quote'                    => new sfValidatorString(array('required' => false)),
-      'author'                   => new sfValidatorString(array('max_length' => 255, 'required' => false)),
-      'source'                   => new sfValidatorString(array('max_length' => 255, 'required' => false)),
-      'website'                  => new sfValidatorString(array('max_length' => 255, 'required' => false)),
-      'is_active'                => new sfValidatorPass(array('required' => false)),
-      'last_published_at'        => new sfValidatorPass(array('required' => false)),
-      'author_last_published_at' => new sfValidatorPass(array('required' => false)),
-      'hash'                     => new sfValidatorString(array('max_length' => 64, 'required' => false)),
-      'slug'                     => new sfValidatorString(array('max_length' => 255, 'required' => false)),
-      'created_at'               => new sfValidatorDateTime(),
-      'updated_at'               => new sfValidatorDateTime(),
-      'words_list'               => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Word', 'required' => false)),
-      'categories_list'          => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Category', 'required' => false)),
+      'id'                         => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
+      'quote'                      => new sfValidatorString(array('required' => false)),
+      'author'                     => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'source'                     => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'website'                    => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'is_active'                  => new sfValidatorPass(array('required' => false)),
+      'last_published_at'          => new sfValidatorPass(array('required' => false)),
+      'author_last_published_at'   => new sfValidatorPass(array('required' => false)),
+      'hash'                       => new sfValidatorString(array('max_length' => 64, 'required' => false)),
+      'slug'                       => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'created_at'                 => new sfValidatorDateTime(),
+      'updated_at'                 => new sfValidatorDateTime(),
+      'words_list'                 => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Word', 'required' => false)),
+      'categories_expression_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'CategoryExpression', 'required' => false)),
     ));
 
     $this->validatorSchema->setPostValidator(
@@ -75,9 +75,9 @@ abstract class BaseCitationForm extends BaseFormDoctrine
       $this->setDefault('words_list', $this->object->Words->getPrimaryKeys());
     }
 
-    if (isset($this->widgetSchema['categories_list']))
+    if (isset($this->widgetSchema['categories_expression_list']))
     {
-      $this->setDefault('categories_list', $this->object->Categories->getPrimaryKeys());
+      $this->setDefault('categories_expression_list', $this->object->CategoriesExpression->getPrimaryKeys());
     }
 
   }
@@ -85,7 +85,7 @@ abstract class BaseCitationForm extends BaseFormDoctrine
   protected function doSave($con = null)
   {
     $this->saveWordsList($con);
-    $this->saveCategoriesList($con);
+    $this->saveCategoriesExpressionList($con);
 
     parent::doSave($con);
   }
@@ -128,14 +128,14 @@ abstract class BaseCitationForm extends BaseFormDoctrine
     }
   }
 
-  public function saveCategoriesList($con = null)
+  public function saveCategoriesExpressionList($con = null)
   {
     if (!$this->isValid())
     {
       throw $this->getErrorSchema();
     }
 
-    if (!isset($this->widgetSchema['categories_list']))
+    if (!isset($this->widgetSchema['categories_expression_list']))
     {
       // somebody has unset this widget
       return;
@@ -146,8 +146,8 @@ abstract class BaseCitationForm extends BaseFormDoctrine
       $con = $this->getConnection();
     }
 
-    $existing = $this->object->Categories->getPrimaryKeys();
-    $values = $this->getValue('categories_list');
+    $existing = $this->object->CategoriesExpression->getPrimaryKeys();
+    $values = $this->getValue('categories_expression_list');
     if (!is_array($values))
     {
       $values = array();
@@ -156,13 +156,13 @@ abstract class BaseCitationForm extends BaseFormDoctrine
     $unlink = array_diff($existing, $values);
     if (count($unlink))
     {
-      $this->object->unlink('Categories', array_values($unlink));
+      $this->object->unlink('CategoriesExpression', array_values($unlink));
     }
 
     $link = array_diff($values, $existing);
     if (count($link))
     {
-      $this->object->link('Categories', array_values($link));
+      $this->object->link('CategoriesExpression', array_values($link));
     }
   }
 

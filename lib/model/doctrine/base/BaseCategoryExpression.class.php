@@ -7,13 +7,16 @@
  * 
  * @property integer $category_id
  * @property string $name
+ * @property Doctrine_Collection $Citations
  * @property Doctrine_Collection $Category
  * 
  * @method integer             getCategoryId()  Returns the current record's "category_id" value
  * @method string              getName()        Returns the current record's "name" value
+ * @method Doctrine_Collection getCitations()   Returns the current record's "Citations" collection
  * @method Doctrine_Collection getCategory()    Returns the current record's "Category" collection
  * @method CategoryExpression  setCategoryId()  Sets the current record's "category_id" value
  * @method CategoryExpression  setName()        Sets the current record's "name" value
+ * @method CategoryExpression  setCitations()   Sets the current record's "Citations" collection
  * @method CategoryExpression  setCategory()    Sets the current record's "Category" collection
  * 
  * @package    citations
@@ -42,8 +45,22 @@ abstract class BaseCategoryExpression extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
+        $this->hasMany('Citation as Citations', array(
+             'refClass' => 'CategoryCitation',
+             'local' => 'category_expression_id',
+             'foreign' => 'citation_id'));
+
         $this->hasMany('Category', array(
              'local' => 'category_id',
              'foreign' => 'id'));
+
+        $sluggable0 = new Doctrine_Template_Sluggable(array(
+             'unique' => true,
+             'fields' => 
+             array(
+              0 => 'name',
+             ),
+             ));
+        $this->actAs($sluggable0);
     }
 }
