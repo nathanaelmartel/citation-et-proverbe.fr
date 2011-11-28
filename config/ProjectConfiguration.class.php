@@ -9,8 +9,7 @@ class ProjectConfiguration extends sfProjectConfiguration
   {
     $this->enablePlugins(
         'sfDoctrinePlugin', 
-        'sfFeed2Plugin', 
-        'nmPlugin'
+        'sfFeed2Plugin'
     );
   }
 }

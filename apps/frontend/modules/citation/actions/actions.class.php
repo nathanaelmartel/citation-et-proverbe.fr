@@ -64,6 +64,13 @@ class citationActions extends sfActions
   	$page = $request->getParameter('page', 0);
   	$nb = 2500;
   	
+    $this->Categories = Doctrine::getTable('Category')
+      ->createQuery('a')
+      ->where('is_active = ?', 1)
+      ->limit(1)
+      ->offset($page)
+      ->execute();
+  	
     $this->authors = Doctrine::getTable('Author')
       ->createQuery('a')
       ->where('is_active = ?', 1)

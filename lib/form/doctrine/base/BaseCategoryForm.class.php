@@ -15,21 +15,27 @@ abstract class BaseCategoryForm extends BaseFormDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'id'         => new sfWidgetFormInputHidden(),
-      'name'       => new sfWidgetFormInputText(),
-      'is_active'  => new sfWidgetFormInputText(),
-      'slug'       => new sfWidgetFormInputText(),
-      'created_at' => new sfWidgetFormDateTime(),
-      'updated_at' => new sfWidgetFormDateTime(),
+      'id'               => new sfWidgetFormInputHidden(),
+      'name'             => new sfWidgetFormInputText(),
+      'meta_title'       => new sfWidgetFormTextarea(),
+      'meta_keyword'     => new sfWidgetFormTextarea(),
+      'meta_description' => new sfWidgetFormTextarea(),
+      'is_active'        => new sfWidgetFormInputText(),
+      'slug'             => new sfWidgetFormInputText(),
+      'created_at'       => new sfWidgetFormDateTime(),
+      'updated_at'       => new sfWidgetFormDateTime(),
     ));
 
     $this->setValidators(array(
-      'id'         => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'name'       => new sfValidatorString(array('max_length' => 255)),
-      'is_active'  => new sfValidatorPass(array('required' => false)),
-      'slug'       => new sfValidatorString(array('max_length' => 255, 'required' => false)),
-      'created_at' => new sfValidatorDateTime(),
-      'updated_at' => new sfValidatorDateTime(),
+      'id'               => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
+      'name'             => new sfValidatorString(array('max_length' => 255)),
+      'meta_title'       => new sfValidatorString(array('required' => false)),
+      'meta_keyword'     => new sfValidatorString(array('required' => false)),
+      'meta_description' => new sfValidatorString(array('required' => false)),
+      'is_active'        => new sfValidatorPass(array('required' => false)),
+      'slug'             => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'created_at'       => new sfValidatorDateTime(),
+      'updated_at'       => new sfValidatorDateTime(),
     ));
 
     $this->validatorSchema->setPostValidator(

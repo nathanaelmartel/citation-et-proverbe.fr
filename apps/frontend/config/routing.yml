@@ -1,7 +1,7 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
-
+# Newsletter
 newsletter:
   url: /abonnement
   param: { module: newsletter, action: new }
@@ -10,18 +10,29 @@ newsletter_confirmation:
   url: /abonnement/confirmation/:code
   param: { module: newsletter, action: confirmation }
   
+# Themes par expressions
+themes_expression:
+  url:   /citation-theme/:theme/:expression
+  param: { module: theme, action: show }
+  
+theme:
+  url:   /citation-theme/:theme
+  param: { module: theme, action: index }
+  
+themes:
+  url:   /citation-themes
+  param: { module: theme, action: list }
+  
+# Themes par mot unique  
 word:
   url:   /theme/:slug
-  param: { module: word, action: show }
-
-word_old:
-  url:   /mot/:slug
   param: { module: word, action: show }
   
 words:
   url:   /themes
   param: { module: word, action: index }
 
+# Contact
 contact:
   url:   /contact
   param: { module: contact, action: index }
@@ -32,6 +43,7 @@ contact_validation:
   param: { module: contact, action: create }
   requirements: { sf_method: [post, put] } 
 
+# Author
 author:
   url:   /auteur/:slug
   param: { module: author, action: show }
@@ -40,10 +52,12 @@ authors:
   url:   /auteur
   param: { module: author, action: index }
 
+# flux
 feed:
   url:   /feed
   param: { module: citation, action: feed }
   
+# Sitemap
 sitemap_page:
   url:   /sitemap/:page
   param: { module: citation, action: sitemap }
@@ -56,6 +70,7 @@ random:
   url:   /random
   param: { module: citation, action: index }
 
+#citation 
 single_citation:
   url:   /:slug
   param: { module: citation, action: show }

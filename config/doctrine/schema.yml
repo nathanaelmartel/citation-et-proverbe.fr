@@ -134,6 +134,9 @@ Category:
 
   columns:
     name: { type: string(255), notnull: true }
+    meta_title: {type: string()}
+    meta_keyword: {type: string()}
+    meta_description: {type: string()}
     is_active: {type: int}
     
   relations:
