@@ -38,6 +38,6 @@ all:
     
     enabled_modules: 
       
-  .actions
+  .actions:
     error_404_module: citation
     error_404_action: error404
