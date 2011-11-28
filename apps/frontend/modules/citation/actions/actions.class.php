@@ -10,6 +10,11 @@
  */
 class citationActions extends sfActions
 {
+  public function executeError404(sfWebRequest $request)
+  { 
+  	$this->redirect('@homepage');
+  }
+  
   public function executeIndex(sfWebRequest $request)
   { 
     $citations = Doctrine::getTable('Citation')

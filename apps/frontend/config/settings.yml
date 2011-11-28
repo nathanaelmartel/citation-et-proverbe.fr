@@ -37,3 +37,7 @@ all:
     standard_helpers: [Partial, Text]
     
     enabled_modules: 
+      
+  .actions
+    error_404_module: citation
+    error_404_action: error404
