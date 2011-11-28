@@ -99,7 +99,7 @@ abstract class BaseCitation extends sfDoctrineRecord
              array(
               0 => 'author',
              ),
-             'canUpdate' => true,
+             'canUpdate' => false,
              ));
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($sluggable0);

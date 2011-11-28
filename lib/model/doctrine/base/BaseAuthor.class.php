@@ -57,6 +57,7 @@ abstract class BaseAuthor extends sfDoctrineRecord
              array(
               0 => 'author',
              ),
+             'canUpdate' => false,
              ));
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($sluggable0);
