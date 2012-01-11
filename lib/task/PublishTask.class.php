@@ -36,7 +36,6 @@ EOF;
     //echo "\n";
     
     $order_field = array('updated_at', 'last_published_at', 'author', 'quote');
-    $order_sens = array('asc', 'desc'); 
         
     $q = Doctrine_Query::create()
     ->select('*')
@@ -44,9 +43,9 @@ EOF;
     ->where('is_active = ?', 1)
     ->offset(rand(0, 1000))
     ->limit(10)
-    ->orderBy($order_field[rand(0, count($order_field)-1 )].' '.$order_sens[rand(0, count($order_sens)-1 )].', '.$order_field[rand(0, count($order_field)-1 )].' '.$order_sens[rand(0, count($order_sens)-1 )].', '.$order_field[rand(0, count($order_field)-1 )].' '.$order_sens[rand(0, count($order_sens)-1 )]);
+    ->orderBy('last_published_at asc');
     
-    //echo $q->getSqlQuery();echo "\n";
+    //echo $q->getSqlQuery();echo "\n";die;
     
     $hour = date('H');
     
