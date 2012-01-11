@@ -63,7 +63,7 @@ EOF;
 	    $citation = $q->fetchOne();
 	    $message = iconv('utf-8', 'us-ascii//TRANSLIT', $citation->getTwitterMessage(false));
       
-      if (false)//simplementNat::twitter_statuses_update($message, $auteur->getTwitterKeys()))
+      if (simplementNat::twitter_statuses_update($message, $auteur->getTwitterKeys()))
 	    {
 	      echo "\nsuccess\n";
 		echo $message;
