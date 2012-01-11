@@ -61,9 +61,9 @@ EOF;
       //echo $q->getSqlQuery();echo "\n";
       
 	    $citation = $q->fetchOne();
-      $message = $citation->getTwitterMessage(false);
+      $message = utf8_encode($citation->getTwitterMessage(false));
       
-      if (simplementNat::twitter_statuses_update('test', $auteur->getTwitterKeys()))
+      if (false)//simplementNat::twitter_statuses_update($message, $auteur->getTwitterKeys()))
 	    {
 	      echo "\nsuccess\n";
 		echo $message;
