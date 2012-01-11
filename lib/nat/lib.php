@@ -108,7 +108,8 @@ class simplementNat
     $aktt = json_decode($keys);
     
     require_once sfConfig::get('sf_lib_dir').'/nat/twitteroauth/twitteroauth.php';
-    define('AKTT_API_POST_STATUS', 'http://twitter.com/statuses/update.json');
+    if (!defined('AKTT_API_POST_STATUS'))
+    	define('AKTT_API_POST_STATUS', 'http://twitter.com/statuses/update.json');
     
     if ($connection = aktt_oauth_connection()) {
       $connection->post(
@@ -120,6 +121,8 @@ class simplementNat
       );
       if (strcmp($connection->http_code, '200') == 0) {
         return true;
+      } else {
+      	var_dump($connection);
       }
     }
     return false;
