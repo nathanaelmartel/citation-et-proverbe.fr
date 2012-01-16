@@ -64,7 +64,7 @@ EOF;
 	    $message = $citation->getTwitterMessage(false);
 	    
       
-      if (false) //simplementNat::twitter_statuses_update($message, $auteur->getTwitterKeys()))
+      if (simplementNat::twitter_statuses_update($message, $auteur->getTwitterKeys()))
 	    {
 	      echo "\nsuccess\n";
 		echo $message;
