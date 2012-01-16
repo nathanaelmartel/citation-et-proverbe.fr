@@ -64,7 +64,7 @@ class Citation extends BaseCitation
     $message = str_replace($short_url.' ', '', $message.$message_suffix);
     $message = $message.' '.$short_url;
     
-    return utf8_encode(iconv('ISO-8859-1', 'utf-8', $message));
+    return utf8_decode(iconv('ISO-8859-1', 'utf-8', $message));
 	}
 	
 	public function findWords()
