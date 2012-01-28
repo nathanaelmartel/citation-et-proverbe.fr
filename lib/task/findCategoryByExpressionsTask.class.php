@@ -84,7 +84,7 @@ EOF;
 	    $q = Doctrine_Query::create()
 	    ->select('*')
 	    ->from('Citation c')
-	    ->Where('concat( author, \' \', quote ) LIKE ?', '%'.$Category->name.' %');
+	    ;//->Where('concat( author, \' \', quote ) LIKE ?', '%'.$Category->name.' %');
 	    
 	    foreach ($words as $word) {
 	    	$q->addWhere('concat( author, \' \', quote ) LIKE ?', '%'.$word.' %');

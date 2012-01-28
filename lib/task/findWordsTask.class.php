@@ -50,7 +50,7 @@ ORDER BY nb DESC
 	    $q = Doctrine_Query::create()
 	    ->select('*')
 	    ->from('Citation c')
-	    ->orderBy('updated_at DESC')
+	    ->orderBy('created_at DESC')
 	    ->limit(100)
 	    ->offset($i);
 	    
