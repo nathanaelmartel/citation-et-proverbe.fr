@@ -36,7 +36,8 @@ EOF;
     $category_id = 3;
     $q = Doctrine_Query::create()
     ->select('*')
-    ->from('Category');
+    ->from('Category')
+    ->where('id = ?', 5);
 	$Categories = $q->execute();
 	
 	foreach ($Categories as $Category) {
@@ -45,7 +46,7 @@ EOF;
     echo "******* ".$Category->name."\n";
     
     /* load keywords */
-    $keyword_file = 'data/keywords/'.$Category->slug.'.txt';
+    /*$keyword_file = 'data/keywords/'.$Category->slug.'.txt';
     if (file_exists($keyword_file)) {
 	    echo 'load keywords';
 	    $lines = file($keyword_file);
@@ -57,7 +58,7 @@ EOF;
 		    }
 	    }
 	    echo "\n";
-    }
+    }*/
     
     /*
     $q = Doctrine_Query::create()
