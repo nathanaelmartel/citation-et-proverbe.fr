@@ -12,5 +12,8 @@ class CategoryExpressionForm extends BaseCategoryExpressionForm
 {
   public function configure()
   {
+  	unset(  
+			$this['citations_list']
+		);  
   }
 }
