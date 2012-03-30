@@ -18,6 +18,10 @@ newsletter_update:
   url: /abonnement/update
   param: { module: newsletter, action: update }
   
+newsletter_edit:
+  url: /abonnement/edit
+  param: { module: newsletter, action: edit }
+  
 # Themes par expressions
 themes_expression:
   url:   /citation-theme/:theme/:expression
