@@ -60,7 +60,6 @@ html {
 }
 
 body {
-	width: 1100px;
 	margin: 0 auto;
 	position: relative;
 }
@@ -153,7 +152,7 @@ article {
 
 
 #site-name a:hover, #site-name a:active, #site-name a:focus {
-	color : #333333;
+	color : #a900ba;
 }
 
 h1 {
@@ -188,7 +187,8 @@ h2 {
 }
 
 .books a {
-	color : #666666;
+	color : #a900ba;
+	font-weight: bold;
 }
 
 .words {
@@ -348,6 +348,7 @@ div.authors li {
 
 @media handheld, only screen and (max-width: 640px), only screen and (max-device-width: 640px) {
 	.form, article, #site-name, nav, footer {width: auto;margin-left: 5%;margin-right:5%;}
+	#site-name {font-size: 40px;}
 }
 
 
