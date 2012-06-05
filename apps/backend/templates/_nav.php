@@ -6,4 +6,5 @@
       <a href="<?php echo url_for('@ads')?>">Ads</a>
       <a href="<?php echo url_for('@category')?>">Categories</a>
       <a href="<?php echo url_for('@category_expression')?>">Categories Expressions</a>
+      <a href="<?php echo url_for('@newsletter')?>">Mailing List</a>
     </nav>
