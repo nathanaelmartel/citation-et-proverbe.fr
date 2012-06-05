@@ -41,8 +41,9 @@ EOF;
     $q = Doctrine_Query::create()
     ->select('*')
     ->from('Author a')
+    ->where('wikipedia_url IS NULL')
     ->offset(0)
-    ->limit(50);
+    ->limit(500);
     
     $authors = $q->execute();
     
