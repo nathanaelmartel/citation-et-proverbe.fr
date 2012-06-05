@@ -14,6 +14,8 @@ abstract class BaseAuthorFormFilter extends BaseFormFilterDoctrine
   {
     $this->setWidgets(array(
       'author'          => new sfWidgetFormFilterInput(),
+      'wikipedia_bio'   => new sfWidgetFormFilterInput(),
+      'wikipedia_url'   => new sfWidgetFormFilterInput(),
       'twitter_account' => new sfWidgetFormFilterInput(),
       'twitter_keys'    => new sfWidgetFormFilterInput(),
       'is_active'       => new sfWidgetFormFilterInput(),
@@ -24,6 +26,8 @@ abstract class BaseAuthorFormFilter extends BaseFormFilterDoctrine
 
     $this->setValidators(array(
       'author'          => new sfValidatorPass(array('required' => false)),
+      'wikipedia_bio'   => new sfValidatorPass(array('required' => false)),
+      'wikipedia_url'   => new sfValidatorPass(array('required' => false)),
       'twitter_account' => new sfValidatorPass(array('required' => false)),
       'twitter_keys'    => new sfValidatorPass(array('required' => false)),
       'is_active'       => new sfValidatorPass(array('required' => false)),
@@ -51,6 +55,8 @@ abstract class BaseAuthorFormFilter extends BaseFormFilterDoctrine
     return array(
       'id'              => 'Number',
       'author'          => 'Text',
+      'wikipedia_bio'   => 'Text',
+      'wikipedia_url'   => 'Text',
       'twitter_account' => 'Text',
       'twitter_keys'    => 'Text',
       'is_active'       => 'Text',

@@ -17,6 +17,8 @@ abstract class BaseAuthorForm extends BaseFormDoctrine
     $this->setWidgets(array(
       'id'              => new sfWidgetFormInputHidden(),
       'author'          => new sfWidgetFormInputText(),
+      'wikipedia_bio'   => new sfWidgetFormTextarea(),
+      'wikipedia_url'   => new sfWidgetFormInputText(),
       'twitter_account' => new sfWidgetFormInputText(),
       'twitter_keys'    => new sfWidgetFormInputText(),
       'is_active'       => new sfWidgetFormInputText(),
@@ -28,6 +30,8 @@ abstract class BaseAuthorForm extends BaseFormDoctrine
     $this->setValidators(array(
       'id'              => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'author'          => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'wikipedia_bio'   => new sfValidatorString(array('required' => false)),
+      'wikipedia_url'   => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'twitter_account' => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'twitter_keys'    => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'is_active'       => new sfValidatorPass(array('required' => false)),

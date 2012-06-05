@@ -38,6 +38,8 @@ Author:
     Timestampable:
   columns:
     author: {type: string(255)}
+    wikipedia_bio: {type: string()}
+    wikipedia_url: {type: string(255), default: null}
     twitter_account: {type: string(255)}
     twitter_keys: {type: string(255)}
     is_active: {type: int}
