@@ -331,7 +331,6 @@ div.authors li {
 	text-align: center;
 }
 
-
 .adsense {
 	margin: auto;
 }
@@ -344,6 +343,14 @@ div.authors li {
 	color: #000000;
 }
 
+.wikipedia {
+  margin: 1em auto;
+  width: 650px;
+}
+
+.wikipedia a {
+  color: #666666;
+}
 
 
 @media handheld, only screen and (max-width: 640px), only screen and (max-device-width: 640px) {

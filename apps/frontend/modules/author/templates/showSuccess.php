@@ -7,6 +7,15 @@
 
 <h1>Citations de <?php echo $author->getAuthor() ?></h1>
 
+<div class="wikipedia">
+  <p>
+    <?php echo $author->wikipedia_bio ?>
+    <?php if ($author->wikipedia_url): ?>
+      <a href="<?php echo $author->wikipedia_url ?>" target="_blank" ><?php echo $author->getAuthor() ?> sur Wikipedia</a>
+    <?php endif; ?>
+  </p> 
+</div>
+
 <?php foreach($citations as $citation): ?>
   <?php include_partial('citation/citation', array('citation' => $citation)) ?>
   
