@@ -41,7 +41,7 @@ EOF;
     $q = Doctrine_Query::create()
     ->select('*')
     ->from('Author a')
-    ->offset(50)
+    ->offset(0)
     ->limit(50);
     
     $authors = $q->execute();
