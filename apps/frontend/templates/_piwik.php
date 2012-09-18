@@ -23,6 +23,7 @@
 	</script><script type="text/javascript">
 	try {
 	var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 5);
+	piwikTracker.disableCookies();
 	piwikTracker.trackPageView();
 	piwikTracker.enableLinkTracking();
 	} catch( err ) {}

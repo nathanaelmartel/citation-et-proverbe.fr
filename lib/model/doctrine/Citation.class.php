@@ -35,7 +35,17 @@ class Citation extends BaseCitation
       
       return false;
 	}
-	
+  
+  public function getAuthorWikipediaBio()
+  {
+      if ($auteur = $this->getAuthorObject())
+      {
+        return $auteur->wikipedia_bio;
+      }
+      
+      return false;
+  }
+  
 	public function getTwitterMessage($show_author = true, $show_tag = true)
 	{
 		$utm_campaign = 'citation_fr';

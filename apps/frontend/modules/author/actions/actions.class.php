@@ -40,9 +40,12 @@ class authorActions extends sfActions
   	$this->forward404Unless($author = Doctrine::getTable('Author')->findOneBySlug(array($request->getParameter('slug'))), sprintf('Object citation does not exist (%s).', $request->getParameter('slug')));
   	$this->forward404Unless($author->getIsActive());
   	
+    $page = '';
+    if ($request->getParameter('page', 1) > 1)
+        $page = ' page '.$request->getParameter('page', 1);
     $response = $this->getResponse();
-    $response->addMeta('description', 'Retrouvez sur notre site toutes les citations de '.$author->getAuthor() );
-    $response->setTitle('Citation '.$author->getAuthor().' : toutes les citations '.$author->getAuthor() );
+    $response->addMeta('description', 'Retrouvez sur notre site toutes les citations de '.$author->getAuthor().$page );
+    $response->setTitle('Citation '.$author->getAuthor().' : toutes les citations '.$author->getAuthor().$page );
     
     $this->author = $author;
     //$this->citations = $author->getCitations();
@@ -54,5 +57,8 @@ class authorActions extends sfActions
     ->where('c.author = ?', $author->getAuthor()));
 		$this->citations->setPage($request->getParameter('page', 1));
 		$this->citations->init();
+    
+    $all_citations = $author->getCitations();
+    $this->first_citation = $all_citations[0];
   }
 }

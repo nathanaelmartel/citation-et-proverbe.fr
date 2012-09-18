@@ -1,4 +1,16 @@
 
+<?php slot('header') ?>
+  <link rel="canonical" href="<?php echo url_for('@author?slug='.$author->slug, array('absolute' => true)) ?>" />
+  <meta property="og:title" content="Citations de <?php echo $author->getAuthor() ?>" />
+  <meta property="og:description" content="«<?php echo $first_citation->getQuote(ESC_RAW); ?> ?>» <?php echo $author->wikipedia_bio ?>" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:url" content="<?php echo url_for('@author?slug='.$author->slug, array('absolute' => true)) ?>" />
+  <meta name="twitter:title" content="Citations de <?php echo $author->getAuthor() ?>" />
+  <meta name="twitter:description" content="«<?php echo $first_citation->getQuote(ESC_RAW); ?> ?>» <?php echo $author->wikipedia_bio ?>" />
+  <meta name="twitter:site" content="@citation_fr" />
+<?php end_slot() ?>
+
+
   	<div class="adsense adsense-728">
 			<?php foreach(AdsTable::getActivesByPosition(9) as $ads): ?>
 				<?php echo $ads->getCode('ESC') ?>

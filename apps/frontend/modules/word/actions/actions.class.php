@@ -45,10 +45,13 @@ class wordActions extends sfActions
   	$this->forward404Unless($word = Doctrine::getTable('Word')->findOneBySlug(array($request->getParameter('slug'))), sprintf('Object citation does not exist (%s).', $request->getParameter('slug')));
   	$this->forward404Unless($word->getIsActive());
   	
+    $page = '';
+    if ($request->getParameter('page', 1) > 1)
+        $page = ' page '.$request->getParameter('page', 1);
     $response = $this->getResponse();
-    $response->addMeta('description', $word->getName().': un thème sur lequel beaucoup d\'auteurs ont écrit. Consultez les meilleures citations sur ce sujet et partagez-les sur les réseaux sociaux !' );
+    $response->addMeta('description', $word->getName().': un thème sur lequel beaucoup d\'auteurs ont écrit. Consultez les meilleures citations sur ce sujet et partagez-les sur les réseaux sociaux !'.$page );
     $response->addMeta('keywords', $word->getName().', citation '.$word->getName().', proverbe '.$word->getName().', citation, citations, proverbe, proverbes' );
-    $response->setTitle('citation '.$word->getName().' - citations '.$word->getName().' célèbres' );
+    $response->setTitle('citation '.$word->getName().' - citations '.$word->getName().' célèbres'.$page );
     
     $this->word = $word;
     //$this->citations = $word->getCitations();
