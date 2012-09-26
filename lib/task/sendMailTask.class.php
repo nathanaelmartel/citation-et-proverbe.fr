@@ -56,7 +56,9 @@ EOF;
 
 						<p style="background-color: #FFFFFF;border-radius: 10px 10px 10px 10px;box-shadow: 0 5px 20px #B3BEC7;font-size: 200%;margin: 20px;padding: 20px;">'.$citation->quote.''.$auteur.'</p>
 						
-						<p>Retrouvez d\'autre citations sur <a href="http://www.citation-et-proverbe.fr?utm_source=mail&utm_medium=mail&utm_campaign=mail">www.citation-et-proverbe.fr</a></p>';
+						<p>Retrouvez d\'autre citations sur <a href="http://www.citation-et-proverbe.fr?utm_source=mail&utm_medium=mail&utm_campaign=mail">www.citation-et-proverbe.fr</a></p>
+						
+						<p><a href="http://www.citation-et-proverbe.fr/desabonnement/[encoded_mail]">désabonnement</a></p>';
 
     echo "\n";
     echo "message: \n";
@@ -70,22 +72,20 @@ EOF;
         ->execute();
  
     
-    /*
-    $connection = new Swift_Connection_SMTP('smtp.validname.com', 25);
-    $connection->setUsername('contact@citation-et-proverbe.fr');
-    $connection->setPassword('u@amabevumazu');
-    */
     
     foreach ($newsletters as $newsletter) {
+      
+      $personalized_message = str_replace('[encoded_mail]', base64_encode($newsletter->getEmail()), $message_text);
+      
 	  	$message = $this->getMailer()->compose(
 	      'contact@citation-et-proverbe.fr',
 	      $newsletter->getEmail(),
 	      'citation du jour',
-	  	  $message_text
+	  	  $personalized_message
 	    );
-    $message->setContentType("text/html");
-		$this->getMailer()->send($message);
-		echo $newsletter->getEmail()."\n";
+      $message->setContentType("text/html");
+  		$this->getMailer()->send($message);
+  		echo $newsletter->getEmail()."\n";
     }
     echo "\n";
   }

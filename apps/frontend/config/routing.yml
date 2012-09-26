@@ -3,6 +3,10 @@
 
 # Newsletter
 newsletter:
+  url: /desabonnement/:code
+  param: { module: newsletter, action: del }
+  
+newsletter:
   url: /abonnement
   param: { module: newsletter, action: new }
   

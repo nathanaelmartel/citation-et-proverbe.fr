@@ -10,11 +10,11 @@
  */
 class newsletterActions extends sfActions
 {
-	public function executeNew(sfWebRequest $request)
-	{
-		$this->form = new NewsletterForm();
-	}
-
+  public function executeNew(sfWebRequest $request)
+  {
+    $this->form = new NewsletterForm();
+  }
+  
 	public function executeCreate(sfWebRequest $request)
 	{
 		$this->forward404Unless($request->isMethod(sfRequest::POST));
@@ -80,6 +80,18 @@ class newsletterActions extends sfActions
 		$newsletter->is_confirmed = true;
 		$newsletter->save();
 	}
+  
+  public function executeDel(sfWebRequest $request)
+  {
+    $email = base64_decode($request->getParameter('code'));
+
+    $this->forward404Unless($newsletter = Doctrine_Core::getTable('Newsletter')->findOneByEmail(array($email)), sprintf('Object newsletter does not exist (%s).', $request->getParameter('code')));
+
+    $newsletter->is_confirmed = false;
+    $newsletter->save();
+    $newsletter->delete();
+  }
+  
 }
 
 
