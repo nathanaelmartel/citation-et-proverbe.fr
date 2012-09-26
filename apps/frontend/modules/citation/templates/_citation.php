@@ -23,7 +23,11 @@
 	      
 	      <?php if ($citation->getSource()): ?>
 		      <div class="source" >
-		      	<?php echo $citation->getSource() ?>
+            <?php if (substr($citation->getSource(), 0, 4) == 'http' ): ?>
+              <a href="<?php echo $citation->getSource() ?>" target="_blank" >source</a>
+            <?php else: ?>
+              <?php echo $citation->getSource() ?>
+            <?php endif;?>
 		      </div>
 	      <?php endif;?>
 				
