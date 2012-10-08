@@ -42,7 +42,7 @@ if ($_SERVER['HTTP_HOST'] == 'admin.citation-et-proverbe.fr')
 
 $enddomaine = substr($_SERVER['HTTP_HOST'], strrpos($_SERVER['HTTP_HOST'], '.')+1);
 if ($enddomaine == 'dev') {
-	$env = 'dev';
+	//$env = 'dev';
 }
 if ($_SERVER['HTTP_HOST'] == 'admin.citation-et-proverbe.fr.dev')
 {

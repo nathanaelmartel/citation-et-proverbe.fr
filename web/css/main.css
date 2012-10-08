@@ -13,37 +13,6 @@ header, nav, section, aside, footer, article, figure {
   margin:0;padding:0;color:#000;background:#FFF;border:0;zoom: 1;display: inline-block;display : block;
 }
 
-@font-face {
-	font-family: 'HollaRegular';
-	src: url('HollaScript-webfont.eot');
-	src: local('☺'), url('HollaScript-webfont.woff') format('woff'), url('HollaScript-webfont.ttf') format('truetype'), url('HollaScript-webfont.svg#webfontKBwlk4JE') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'MarketingScriptRegular';
-	src: url('MarketingScript-webfont.eot');
-	src: local('☺'), url('MarketingScript-webfont.woff') format('woff'), url('MarketingScript-webfont.ttf') format('truetype'), url('MarketingScript-webfont.svg#webfontcj7SXPfg') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-
-
-@font-face {
-    font-family: 'MEgalopolisExtraRegular';
-    src: url('megalopolisextra-webfont.eot');
-    src: url('megalopolisextra-webfont.eot?#iefix') format('embedded-opentype'),
-         url('megalopolisextra-webfont.woff') format('woff'),
-         url('megalopolisextra-webfont.ttf') format('truetype'),
-         url('megalopolisextra-webfont.svg#MEgalopolisExtraRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-
 /*
 Copyright (c) 2009, Yahoo! Inc. All rights reserved.
 Code licensed under the BSD License:

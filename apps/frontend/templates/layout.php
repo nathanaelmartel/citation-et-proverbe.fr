@@ -7,8 +7,11 @@
     <?php include_metas() ?>
     <?php include_title() ?>
     <link rel="shortcut icon" href="/favicon.ico" />
-    <?php include_stylesheets() ?>
-    <?php include_javascripts() ?>
+    <?php 
+    use_helper('swCombine');
+    sw_include_stylesheets();
+    sw_combine_debug(); ?>
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/font.css" />
     <link rel="alternate" type="application/rss+xml" title="flux" href="/feed" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="author" href="/humans.txt" />
