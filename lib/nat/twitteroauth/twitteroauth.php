@@ -43,8 +43,8 @@ class TwitterOAuth {
    * Set API URLS
    */
   function accessTokenURL()  { return 'https://api.twitter.com/oauth/access_token'; }
-  function authenticateURL() { return 'https://twitter.com/oauth/authenticate'; }
-  function authorizeURL()    { return 'https://twitter.com/oauth/authorize'; }
+  function authenticateURL() { return 'https://api.twitter.com/oauth/authenticate'; }
+  function authorizeURL()    { return 'https://api.twitter.com/oauth/authorize'; }
   function requestTokenURL() { return 'https://api.twitter.com/oauth/request_token'; }
 
   /**
@@ -115,7 +115,7 @@ class TwitterOAuth {
     }
     $request = $this->oAuthRequest($this->accessTokenURL(), 'GET', $parameters);
     $token = OAuthUtil::parse_parameters($request);
-    $this->token = new OAuthConsumer('aXKXXOfOhWsmum1pzCZ6LQ5HYLZtGSGfj0dkyzX0z0'/*$token['oauth_token']*/, 'jPQC37CUcS7TjQsL9ZBGt2uAGfS8JOWgakLr2tAgle4'/*$token['oauth_token_secret']*/);
+    $this->token = new OAuthConsumer($token['oauth_token'], $token['oauth_token_secret']);
     return $token;
   }
 
@@ -135,7 +135,7 @@ class TwitterOAuth {
     $parameters['x_auth_mode'] = 'client_auth';
     $request = $this->oAuthRequest($this->accessTokenURL(), 'POST', $parameters);
     $token = OAuthUtil::parse_parameters($request);
-    $this->token = new OAuthConsumer('aXKXXOfOhWsmum1pzCZ6LQ5HYLZtGSGfj0dkyzX0z0'/*$token['oauth_token']*/, 'jPQC37CUcS7TjQsL9ZBGt2uAGfS8JOWgakLr2tAgle4'/*$token['oauth_token_secret']*/);
+    $this->token = new OAuthConsumer($token['oauth_token'], $token['oauth_token_secret']);
     return $token;
   }
 

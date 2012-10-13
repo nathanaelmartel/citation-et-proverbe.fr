@@ -52,7 +52,7 @@ class Citation extends BaseCitation
 		if (!$show_author)
 			$utm_campaign = str_replace(' ', '_', $this->author);
 		
-    $short_url = simplementNat::make_isdg_url('http://www.citation-et-proverbe.fr/'.$this->slug.'/?utm_source=twitter&utm_medium=twitter&utm_campaign='.$utm_campaign);
+    $short_url = 'http://www.citation-et-proverbe.fr/'.$this->slug;
     $message = $short_url.' '.$this->quote;
     
     $message_suffix = '';
