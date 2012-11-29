@@ -42,12 +42,12 @@ if ($_SERVER['HTTP_HOST'] == 'admin.citation-et-proverbe.fr')
 
 $enddomaine = substr($_SERVER['HTTP_HOST'], strrpos($_SERVER['HTTP_HOST'], '.')+1);
 if ($enddomaine == 'dev') {
-	//$env = 'dev';
+	$env = 'dev';
 }
 if ($_SERVER['HTTP_HOST'] == 'admin.citation-et-proverbe.fr.dev')
 {
 	$application = 'backend';
 }
 
-$configuration = ProjectConfiguration::getApplicationConfiguration($application, $env, $env != prod);
+$configuration = ProjectConfiguration::getApplicationConfiguration($application, $env, $env != 'prod');
 sfContext::createInstance($configuration)->dispatch();
