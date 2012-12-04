@@ -34,6 +34,7 @@ EOF;
     $connection = $databaseManager->getDatabase($options['connection'])->getConnection();
 
     //echo "\n";
+    //SELECT SUBSTRING( `created_at` , 1, 7 ) , count( id ) FROM `citation` GROUP BY SUBSTRING( `created_at` , 1, 7 ) LIMIT 0 , 30
     
     $order_field = array('updated_at', 'last_published_at', 'author', 'quote');
         
@@ -41,7 +42,9 @@ EOF;
     ->select('*')
     ->from('Citation c')
     ->where('is_active = ?', 1)
-    ->offset(rand(0, 1000))
+    ->andWhere('SUBSTRING( `created_at` , 1, 7 ) <> ?', '2010-08')
+    ->andWhere('SUBSTRING( `created_at` , 1, 7 ) <> ?', '2010-09')
+    //->offset(rand(0, 1000))
     ->limit(10)
     ->orderBy('last_published_at asc');
     
@@ -56,7 +59,7 @@ EOF;
     
     $message = $citation->getTwitterMessage();
     
-		//echo $message;
+		//echo $message;echo "\n";die;
 		//echo "\n";
     $keys['app_consumer_key'] = 'yCoanARNtjPwX4LenZLqTQ';
     $keys['app_consumer_secret'] = 'lGJlKSRxrAYW9onwmigQyBmiowlUjv2hYOGDsH5JY8';
