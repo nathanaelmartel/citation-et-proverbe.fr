@@ -50,11 +50,6 @@ EOF;
     
     //echo $q->getSqlQuery();echo "\n";die;
     
-    $hour = date('H');
-    
-    if (($hour < 7) || (($hour%2) == 0))
-      die("pas de twitt à cette heure ci : pas de post la nuit, ni les heures paires\n");
-    
     $citation = $q->fetchOne();
     
     $message = $citation->getTwitterMessage();
