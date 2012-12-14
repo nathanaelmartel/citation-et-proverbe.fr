@@ -42,9 +42,9 @@ EOF;
     ->select('*')
     ->from('Citation c')
     ->where('is_active = ?', 1)
-    ->andWhere('SUBSTRING( `created_at` , 1, 7 ) <> ?', '2010-08')
-    ->andWhere('SUBSTRING( `created_at` , 1, 7 ) <> ?', '2010-09')
-    ->offset(rand(0, 10))
+    //->andWhere('SUBSTRING( `created_at` , 1, 7 ) <> ?', '2010-08')
+    //->andWhere('SUBSTRING( `created_at` , 1, 7 ) <> ?', '2010-09')
+    ->offset(rand(0, rand(0, 10000)))
     ->limit(10)
     ->orderBy('last_published_at asc');
     
