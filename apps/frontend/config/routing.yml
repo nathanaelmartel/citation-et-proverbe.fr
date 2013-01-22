@@ -99,7 +99,7 @@ single_citation:
 sincle_citation2:
   url:   /:slug/
   param: { module: citation, action: show }
-sincle_citation3:
+single_citation_id:
   url:   /c/:id
   param: { module: citation, action: showid }
 
