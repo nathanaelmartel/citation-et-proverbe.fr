@@ -23,7 +23,13 @@
 			<?php foreach(AdsTable::getActivesByPosition(15) as $ads): ?>
 				<?php echo $ads->getCode('ESC') ?>
 			<?php endforeach; ?>
-			<?php for ($i=$citation->id ; $i<$citation->id+10 ; $i++): ?>
-				<a href="<?php echo url_for('@sincle_citation3?id='.$i, array('absolute' => true)) ?>" >citation <?php echo $i ?></a>
+			<?php for ($i=1 ; $i<10 ; $i++): $id = $citation->id+bcpow($i,2); ?>
+				<a href="<?php echo url_for('@single_citation_id?id='.$id, array('absolute' => true)) ?>" >citation <?php echo $id ?></a>
+			<?php endfor; ?>
+			<?php for ($i=2 ; $i<100 ; $i++): $id = $citation->id+$i*2; ?>
+				<a href="<?php echo url_for('@single_citation_id?id='.$id, array('absolute' => true)) ?>" >citation <?php echo $id ?></a>
+			<?php endfor; ?>
+			<?php for ($i=2 ; $i<100 ; $i++): $id = $citation->id+$i; ?>
+				<a href="<?php echo url_for('@single_citation_id?id='.$id, array('absolute' => true)) ?>" >citation <?php echo $id ?></a>
 			<?php endfor; ?>
 		</div>
