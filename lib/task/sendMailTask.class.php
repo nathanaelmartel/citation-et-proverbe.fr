@@ -56,7 +56,7 @@ EOF;
 
 						<p style="background-color: #FFFFFF;border-radius: 10px 10px 10px 10px;box-shadow: 0 5px 20px #B3BEC7;font-size: 200%;margin: 20px;padding: 20px;">'.$citation->quote.''.$auteur.'</p>
 						
-						<p>Retrouvez d\'autre citations sur <a href="http://www.citation-et-proverbe.fr?utm_source=mail&utm_medium=mail&utm_campaign=mail">www.citation-et-proverbe.fr</a></p>
+						<p>Retrouvez d\'autre citations sur <a href="http://www.citation-ou-proverbe.fr?pk_campaign=email&pk_kwd=email-footer" style="color:#000;">Citation ou Proverbe</a></p>
 						
 						<p><a href="http://www.citation-et-proverbe.fr/desabonnement/[encoded_mail]">désabonnement</a></p>';
 
@@ -78,7 +78,7 @@ EOF;
       $personalized_message = str_replace('[encoded_mail]', base64_encode($newsletter->getEmail()), $message_text);
       
 	  	$message = $this->getMailer()->compose(
-	      'contact@citation-et-proverbe.fr',
+	      'contact@citation-ou-proverbe.fr',
 	      $newsletter->getEmail(),
 	      'citation du jour',
 	  	  $personalized_message
