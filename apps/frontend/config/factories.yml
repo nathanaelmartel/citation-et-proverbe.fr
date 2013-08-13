@@ -39,7 +39,7 @@ all:
       cache_key_use_vary_headers: true
       cache_key_use_host_name:    true
 
-      
+
   mailer:
     class: sfMailer
     param:
@@ -49,9 +49,9 @@ all:
       transport:
         class: Swift_SmtpTransport
         param:
-          host:       smtp.validname.com
+          host:       smtp.simplement-web.com
           port:       25
           encryption: ~
-          username:   contact@citation-et-proverbe.fr
-          password:   u@amabevumazu
+          username:   citation@simplement-web.com
+          password:   ere%erubezaj
           
