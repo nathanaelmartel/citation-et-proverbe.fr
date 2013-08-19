@@ -114,9 +114,7 @@ Newsletter:
   columns:
     email: varchar(255)
     is_confirmed: {type: boolean, default: false} 
-    referer: clob
-    host: varchar(255)
-    keywords: varchar(255)
+    last_send_at: datetime
     
   actAs:
     Timestampable:

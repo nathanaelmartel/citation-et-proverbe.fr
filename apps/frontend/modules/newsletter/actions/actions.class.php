@@ -47,16 +47,6 @@ class newsletterActions extends sfActions
 		if ($form->isValid())
 		{
       $newsletter = $form->save();
-			
-      // recupere les infos de cookie
-      $cookie = $this->getRequest()->getCookie(sfConfig::get('app_cookie_name'));
-      if ($cookie) {
-        parse_str($cookie);
-        $newsletter->referer = $referer;
-        $newsletter->host = $host;
-        $newsletter->keywords = $keywords;
-        $newsletter->save();
-      }
 
 			// Mail au client
 			$message = Swift_Message::newInstance()

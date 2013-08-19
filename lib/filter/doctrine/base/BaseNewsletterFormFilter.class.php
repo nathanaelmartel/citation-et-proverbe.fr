@@ -15,9 +15,7 @@ abstract class BaseNewsletterFormFilter extends BaseFormFilterDoctrine
     $this->setWidgets(array(
       'email'        => new sfWidgetFormFilterInput(),
       'is_confirmed' => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
-      'referer'      => new sfWidgetFormFilterInput(),
-      'host'         => new sfWidgetFormFilterInput(),
-      'keywords'     => new sfWidgetFormFilterInput(),
+      'last_send_at' => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
       'created_at'   => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
       'updated_at'   => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
     ));
@@ -25,9 +23,7 @@ abstract class BaseNewsletterFormFilter extends BaseFormFilterDoctrine
     $this->setValidators(array(
       'email'        => new sfValidatorPass(array('required' => false)),
       'is_confirmed' => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
-      'referer'      => new sfValidatorPass(array('required' => false)),
-      'host'         => new sfValidatorPass(array('required' => false)),
-      'keywords'     => new sfValidatorPass(array('required' => false)),
+      'last_send_at' => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
       'created_at'   => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
       'updated_at'   => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
     ));
@@ -52,9 +48,7 @@ abstract class BaseNewsletterFormFilter extends BaseFormFilterDoctrine
       'id'           => 'Number',
       'email'        => 'Text',
       'is_confirmed' => 'Boolean',
-      'referer'      => 'Text',
-      'host'         => 'Text',
-      'keywords'     => 'Text',
+      'last_send_at' => 'Date',
       'created_at'   => 'Date',
       'updated_at'   => 'Date',
     );

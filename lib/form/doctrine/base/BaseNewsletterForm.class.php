@@ -18,9 +18,7 @@ abstract class BaseNewsletterForm extends BaseFormDoctrine
       'id'           => new sfWidgetFormInputHidden(),
       'email'        => new sfWidgetFormInputText(),
       'is_confirmed' => new sfWidgetFormInputCheckbox(),
-      'referer'      => new sfWidgetFormTextarea(),
-      'host'         => new sfWidgetFormInputText(),
-      'keywords'     => new sfWidgetFormInputText(),
+      'last_send_at' => new sfWidgetFormInputText(),
       'created_at'   => new sfWidgetFormDateTime(),
       'updated_at'   => new sfWidgetFormDateTime(),
     ));
@@ -29,9 +27,7 @@ abstract class BaseNewsletterForm extends BaseFormDoctrine
       'id'           => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'email'        => new sfValidatorPass(array('required' => false)),
       'is_confirmed' => new sfValidatorBoolean(array('required' => false)),
-      'referer'      => new sfValidatorString(array('required' => false)),
-      'host'         => new sfValidatorPass(array('required' => false)),
-      'keywords'     => new sfValidatorPass(array('required' => false)),
+      'last_send_at' => new sfValidatorPass(array('required' => false)),
       'created_at'   => new sfValidatorDateTime(),
       'updated_at'   => new sfValidatorDateTime(),
     ));

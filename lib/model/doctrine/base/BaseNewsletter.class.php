@@ -7,20 +7,14 @@
  * 
  * @property varchar $email
  * @property boolean $is_confirmed
- * @property clob $referer
- * @property varchar $host
- * @property varchar $keywords
+ * @property datetime $last_send_at
  * 
  * @method varchar    getEmail()        Returns the current record's "email" value
  * @method boolean    getIsConfirmed()  Returns the current record's "is_confirmed" value
- * @method clob       getReferer()      Returns the current record's "referer" value
- * @method varchar    getHost()         Returns the current record's "host" value
- * @method varchar    getKeywords()     Returns the current record's "keywords" value
+ * @method datetime   getLastSendAt()   Returns the current record's "last_send_at" value
  * @method Newsletter setEmail()        Sets the current record's "email" value
  * @method Newsletter setIsConfirmed()  Sets the current record's "is_confirmed" value
- * @method Newsletter setReferer()      Sets the current record's "referer" value
- * @method Newsletter setHost()         Sets the current record's "host" value
- * @method Newsletter setKeywords()     Sets the current record's "keywords" value
+ * @method Newsletter setLastSendAt()   Sets the current record's "last_send_at" value
  * 
  * @package    citations
  * @subpackage model
@@ -40,16 +34,8 @@ abstract class BaseNewsletter extends sfDoctrineRecord
              'type' => 'boolean',
              'default' => false,
              ));
-        $this->hasColumn('referer', 'clob', null, array(
-             'type' => 'clob',
-             ));
-        $this->hasColumn('host', 'varchar', 255, array(
-             'type' => 'varchar',
-             'length' => 255,
-             ));
-        $this->hasColumn('keywords', 'varchar', 255, array(
-             'type' => 'varchar',
-             'length' => 255,
+        $this->hasColumn('last_send_at', 'datetime', null, array(
+             'type' => 'datetime',
              ));
 
         $this->option('collate', 'utf8_unicode_ci');

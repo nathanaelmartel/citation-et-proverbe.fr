@@ -40,9 +40,8 @@ EOF;
       ->orderBy('last_published_at desc')
       ->execute();
     $citation = $citations[0];
-    echo "\n";
-    echo "citation: \n";
-    echo $citation->quote;
+    
+    sfTask::log('citation: '.$citation->quote);
     
 	    if ($citation->getAuthor())
 	    {
@@ -60,15 +59,13 @@ EOF;
 						
 						<p><a href="http://www.citation-et-proverbe.fr/desabonnement/[encoded_mail]">désabonnement</a></p>';
 
-    echo "\n";
-    echo "message: \n";
-    echo $message_text;
-    echo "\n";
-    echo "abonnes: \n";
     
     $newsletters = Doctrine::getTable('Newsletter')
-    	->createQuery('a')
+    		->createQuery('a')
         ->where('is_confirmed = ?', 1)
+        ->andWhere('hour(TIMEDIFF(now(), last_send_at)) > ?', 24)
+        ->limit(45)
+        ->orderBy('last_send_at ASC')
         ->execute();
  
     
@@ -85,7 +82,10 @@ EOF;
 	    );
       $message->setContentType("text/html");
   		$this->getMailer()->send($message);
-  		echo $newsletter->getEmail()."\n";
+  		
+    	$newsletter->last_send_at = new Doctrine_Expression('NOW()');
+    	$newsletter->save();
+    	sfTask::log($newsletter->getEmail());
     }
     echo "\n";
   }
