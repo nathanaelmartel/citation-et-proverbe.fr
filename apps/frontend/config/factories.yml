@@ -50,7 +50,7 @@ all:
         class: Swift_SmtpTransport
         param:
           host:       smtp.simplement-web.com
-          port:       25
+          port:       587
           encryption: ~
           username:   citation@simplement-web.com
           password:   ere%erubezaj
