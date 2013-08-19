@@ -14,9 +14,7 @@ class NewsletterForm extends BaseNewsletterForm
   {
     unset(
           $this['id'],
-          $this['referer'],
-          $this['host'],
-          $this['keywords'],
+          $this['last_send_at'],
           $this['updated_at'],
           $this['created_at'], 
           $this['is_confirmed']
