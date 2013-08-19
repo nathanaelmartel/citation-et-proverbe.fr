@@ -68,6 +68,7 @@ class newsletterActions extends sfActions
 		$this->forward404Unless($newsletter = Doctrine_Core::getTable('Newsletter')->findOneByEmail(array($email)), sprintf('Object newsletter does not exist (%s).', $request->getParameter('code')));
 
 		$newsletter->is_confirmed = true;
+   	$newsletter->last_send_at = new Doctrine_Expression('NOW()');
 		$newsletter->save();
 	}
   

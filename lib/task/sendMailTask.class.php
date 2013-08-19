@@ -85,7 +85,7 @@ EOF;
   		
     	$newsletter->last_send_at = new Doctrine_Expression('NOW()');
     	$newsletter->save();
-    	sfTask::log($newsletter->getEmail());
+    	sfTask::log(date('U').': '.$newsletter->getEmail());
     }
     echo "\n";
   }
