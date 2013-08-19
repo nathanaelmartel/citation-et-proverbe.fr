@@ -32,6 +32,7 @@ EOF;
     // initialize the database connection
     $databaseManager = new sfDatabaseManager($this->configuration);
     $connection = $databaseManager->getDatabase($options['connection'])->getConnection();
+    sfTask::log('**** '.date('r').' ****');    
     
     $citations = Doctrine::getTable('Citation')
       ->createQuery('a')
@@ -85,8 +86,8 @@ EOF;
   		
     	$newsletter->last_send_at = new Doctrine_Expression('NOW()');
     	$newsletter->save();
-    	sfTask::log(date('U').': '.$newsletter->getEmail());
+    	sfTask::log($newsletter->getEmail());
     }
-    echo "\n";
+    sfTask::log('**** '.date('r').' ****');    
   }
 }
