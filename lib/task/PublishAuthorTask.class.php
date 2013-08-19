@@ -67,7 +67,7 @@ EOF;
       if (simplementNat::twitter_statuses_update($message, $auteur->getTwitterKeys()))
 	    {
 	      echo "\nsuccess\n";
-		echo $message;
+				echo $message;
 	      $citation->author_last_published_at = date('Y-m-d G:i:s');
 	      $citation->save();   
 	      echo "\n";
@@ -75,7 +75,7 @@ EOF;
 	    else
 	    { 
 	      echo "\nfailed\n";
-		echo $message;
+				echo $message;
 	    }
 	    
 	    echo "\n";

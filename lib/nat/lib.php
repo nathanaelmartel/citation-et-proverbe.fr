@@ -122,8 +122,9 @@ class simplementNat
       if (strcmp($connection->http_code, '200') == 0) {
         return true;
       } else {
-var_dump($connection);    		
-sfTask::log('twitter failed : '.$connection->http_code);
+
+	var_dump($connection);    		
+	sfTask::log('twitter failed : '.$connection->http_code);
       }
     }
     return false;
