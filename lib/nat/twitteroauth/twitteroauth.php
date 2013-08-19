@@ -1,5 +1,4 @@
 <?php
-
 /*
  * Abraham Williams (abraham@abrah.am) http://abrah.am
  *
@@ -7,7 +6,9 @@
  */
 
 /* Load OAuth lib. You can find it at http://oauth.net */
-require_once('OAuth.php');
+if (!class_exists('OAuthException')) {
+	require_once('OAuth.php');
+}
 
 /**
  * Twitter OAuth class

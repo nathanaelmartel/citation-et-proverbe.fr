@@ -122,9 +122,8 @@ class simplementNat
       if (strcmp($connection->http_code, '200') == 0) {
         return true;
       } else {
-
-	var_dump($connection);    		
-	sfTask::log('twitter failed : '.$connection->http_code);
+				var_dump($connection);    		
+				sfTask::log('twitter failed : '.$connection->http_code);
       }
     }
     return false;
@@ -172,6 +171,9 @@ function aktt_oauth_connection() {
       $aktt->oauth_token_secret
     );
     $connection->useragent = 'Citation Francophone';
+    $connection->ssl_verifypeer = TRUE;
+    $connection->host = "https://api.twitter.com/1.1/";
+    
     return $connection;
   }
   else {
