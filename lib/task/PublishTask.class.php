@@ -53,7 +53,7 @@ EOF;
     
     $citation = $q->fetchOne();
     
-    $message = $citation->getTwitterMessage();
+    $message = $citation->getTwitterMessage(false, false);
     
 		//echo $message;echo "\n";die;
 		//echo "\n";
