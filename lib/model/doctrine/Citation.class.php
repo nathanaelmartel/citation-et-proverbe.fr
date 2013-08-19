@@ -67,9 +67,9 @@ class Citation extends BaseCitation
       }
     }
       
-    if (strlen($message.$message_suffix) > 139)
+    if (strlen($message.$message_suffix) > 135)
     {
-      $message = substr($message, 0, 135-strlen($message_suffix)).'...';
+      $message = substr($message, 0, 130-strlen($message_suffix)).'...';
     }
     $message = str_replace($short_url.' ', '', $message.$message_suffix);
     $message = $message.' '.$short_url;
