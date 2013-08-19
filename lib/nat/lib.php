@@ -109,7 +109,7 @@ class simplementNat
     
     require_once sfConfig::get('sf_lib_dir').'/nat/twitteroauth/twitteroauth.php';
     if (!defined('AKTT_API_POST_STATUS'))
-    	define('AKTT_API_POST_STATUS', 'http://api.twitter.com/1/statuses/update.json');
+    	define('AKTT_API_POST_STATUS', 'https://api.twitter.com/1.1/statuses/update.json');
     
     if ($connection = aktt_oauth_connection()) {
       $connection->post(
