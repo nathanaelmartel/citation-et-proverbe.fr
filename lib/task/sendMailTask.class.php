@@ -51,12 +51,15 @@ EOF;
 		   	else 
 		    	$auteur =  $citation->author ;
 	    }
-	
+	    
+    $annonce = '<p>Retrouvez d\'autre citations sur <a href="http://www.citation-ou-proverbe.fr?pk_campaign=email&pk_kwd=email-footer" style="color:#000;">Citation ou Proverbe</a></p>';
+  	$annonce = '<p>Découvrez <a href="http://revenudebase.info/?utm_source=citation-et-proverbe.fr&utm_medium=email&utm_campaign=citation-et-proverbe.fr" style="color:#000;">Le Revenu de base</a>, et vous, que feriez-vous si votre revenu était garanti ?</p>';
+	  
     $message_text = '<p>Bonjour, <br />Voici la citation du jour : </p>
 
 						<p style="background-color: #FFFFFF;border-radius: 10px 10px 10px 10px;box-shadow: 0 5px 20px #B3BEC7;font-size: 200%;margin: 20px;padding: 20px;">'.$citation->quote.''.$auteur.'</p>
 						
-						<p>Retrouvez d\'autre citations sur <a href="http://www.citation-ou-proverbe.fr?pk_campaign=email&pk_kwd=email-footer" style="color:#000;">Citation ou Proverbe</a></p>
+						'.$annonce.'
 						
 						<p><a href="http://www.citation-et-proverbe.fr/desabonnement/[encoded_mail]">désabonnement</a></p>';
 
