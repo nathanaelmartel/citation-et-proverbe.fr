@@ -32,7 +32,7 @@ EOF;
     // initialize the database connection
     $databaseManager = new sfDatabaseManager($this->configuration);
     $connection = $databaseManager->getDatabase($options['connection'])->getConnection();
-    sfTask::log('**** '.date('r').' ****');    
+    sfTask::log('**** Begin at: '.date('r').' ****');    
     
     $citations = Doctrine::getTable('Citation')
       ->createQuery('a')
@@ -64,17 +64,19 @@ EOF;
 						<p><a href="http://www.citation-et-proverbe.fr/desabonnement/[encoded_mail]">désabonnement</a></p>';
 
     
-    $newsletters = Doctrine::getTable('Newsletter')
+    $q = Doctrine::getTable('Newsletter')
     		->createQuery('a')
         ->where('is_confirmed = ?', 1)
         ->andWhere('hour(TIMEDIFF(now(), last_send_at)) > ?', 24)
         ->limit(45)
-        ->orderBy('last_send_at ASC')
-        ->execute();
+        ->orderBy('last_send_at ASC');
  
+    die($q->getSqlQuery());
     
+    $newsletters = $q->execute();
     
     foreach ($newsletters as $newsletter) {
+    	sfTask::log($newsletter->getEmail());
       
       $personalized_message = str_replace('[encoded_mail]', base64_encode($newsletter->getEmail()), $message_text);
       
@@ -85,12 +87,15 @@ EOF;
 	  	  $personalized_message
 	    );
       $message->setContentType("text/html");
-  		$this->getMailer()->send($message);
+      if ($this->getMailer()->send($message)) {
+    		sfTask::log('  -> ok');
+      } else {
+    		sfTask::log('  -> #failed');
+      }
   		
     	$newsletter->last_send_at = new Doctrine_Expression('NOW()');
     	$newsletter->save();
-    	sfTask::log($newsletter->getEmail());
     }
-    sfTask::log('**** '.date('r').' ****');    
+    sfTask::log('**** End at: '.date('r').' ****');    
   }
 }
