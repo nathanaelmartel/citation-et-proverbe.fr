@@ -68,7 +68,7 @@ EOF;
     		->createQuery('a')
         ->where('is_confirmed = ?', 1)
         ->andWhere('hour(TIMEDIFF(now(), last_send_at)) > ?', 24)
-        ->limit(45)
+        ->limit(35)
         ->orderBy('last_send_at ASC');
  
     //die($q->getSqlQuery());
