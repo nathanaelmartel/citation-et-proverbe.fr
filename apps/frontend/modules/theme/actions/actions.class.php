@@ -19,10 +19,6 @@ class themeActions extends sfActions
   {
   	$this->forward404Unless($Category = Doctrine::getTable('Category')->findOneBySlug(array($request->getParameter('theme'))), sprintf('Object category does not exist (%s).', $request->getParameter('theme')));
   	
-    $response = $this->getResponse();
-    $response->addMeta('description', $Category->getMetaDescription() );
-    $response->addMeta('keywords', $Category->getMetaKeyword() );
-    $response->setTitle($Category->getMetaTitle() );
     
     
 	$this->Expressions = Doctrine_Query::create()
@@ -40,10 +36,6 @@ class themeActions extends sfActions
   	$this->forward404Unless($Expression = Doctrine::getTable('CategoryExpression')->findOneBySlug(array($request->getParameter('expression'))), sprintf('Object citation does not exist (%s).', $request->getParameter('expression')));
   	$this->forward404Unless($Expression->getCountCitations());
 
-    $response = $this->getResponse();
-    $response->addMeta('description', $Category->getName().' '.$Expression->getName().' - '.$Category->getMetaDescription() );
-    $response->addMeta('keywords', $Category->getName().' '.$Expression->getName().', '.$Category->getMetaKeyword() );
-    $response->setTitle('Citation '.$Category->getName().' '.$Expression->getName().' - '.$Category->getMetaTitle() );
     
 	$this->citations = Doctrine_Query::create()
       ->select()

@@ -30,9 +30,6 @@ class authorActions extends sfActions
 		$this->authors = $dbh->query($query); 
 		
   	
-    $response = $this->getResponse();
-    $response->addMeta('description', 'Auteurs de Citations ');
-    $response->setTitle('Auteurs de Citations ' );
   }
   
   public function executeShow(sfWebRequest $request)
@@ -44,8 +41,7 @@ class authorActions extends sfActions
     if ($request->getParameter('page', 1) > 1)
         $page = ' page '.$request->getParameter('page', 1);
     $response = $this->getResponse();
-    $response->addMeta('description', 'Retrouvez sur notre site toutes les citations de '.$author->getAuthor().$page );
-    $response->setTitle('Citation '.$author->getAuthor().' : toutes les citations '.$author->getAuthor().$page );
+    $response->setTitle('Citations '.$author->getAuthor() );
     
     $this->author = $author;
     //$this->citations = $author->getCitations();
