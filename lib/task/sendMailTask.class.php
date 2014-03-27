@@ -67,7 +67,7 @@ EOF;
     $q = Doctrine::getTable('Newsletter')
     		->createQuery('a')
         ->where('is_confirmed = ?', 1)
-        ->andWhere('hour(TIMEDIFF(now(), last_send_at)) > ?', 24)
+        ->andWhere('hour(TIMEDIFF(now(), last_send_at)) > ?', 36)
         ->limit(35)
         ->orderBy('last_send_at ASC');
  
@@ -89,12 +89,12 @@ EOF;
       $message->setContentType("text/html");
       if ($this->getMailer()->send($message)) {
     		sfTask::log('  -> ok');
+	    	$newsletter->last_send_at = new Doctrine_Expression('NOW()');
+	    	$newsletter->save();
       } else {
     		sfTask::log('  -> #failed');
       }
   		
-    	$newsletter->last_send_at = new Doctrine_Expression('NOW()');
-    	$newsletter->save();
     }
     sfTask::log('**** End at: '.date('r').' ****');    
   }
