@@ -49,10 +49,6 @@ class citationActions extends sfActions
   {
     $this->forward404Unless($citation = Doctrine::getTable('Citation')->findOneBySlug(array($request->getParameter('slug'))), sprintf('Object citation does not exist (%s).', $request->getParameter('slug')));
 
-    $response = $this->getResponse();
-    $response->addMeta('description', substr($citation->getQuote(), 0, stripos($citation->getQuote(), ' ', 50)+1 ).'... - '.$citation->getAuthor().'. Retrouvez plus de citations sur notre site.');
-    $response->setTitle($citation->getAuthor().' : '.$citation->getQuote() );
-    
     if ($citation->getIsActive() != 1)
       $this->redirect('@homepage');
     
@@ -63,10 +59,6 @@ class citationActions extends sfActions
   {
     $this->forward404Unless($citation = Doctrine::getTable('Citation')->findOneById(array($request->getParameter('id'))), sprintf('Object citation does not exist (%s).', $request->getParameter('id')));
 
-    $response = $this->getResponse();
-    $response->addMeta('description', substr($citation->getQuote(), 0, stripos($citation->getQuote(), ' ', 50)+1 ).'... - '.$citation->getAuthor().'. Retrouvez plus de citations sur notre site.');
-    $response->setTitle($citation->getAuthor().' : '.$citation->getQuote() );
-    
     if ($citation->getIsActive() != 1)
       $this->redirect('@homepage');
     

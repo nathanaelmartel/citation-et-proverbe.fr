@@ -11,7 +11,7 @@ all:
   Contact:
     email_subject: '[citation-et-proverbe] Formulaire de contact'
     email_from: contact@citation-et-proverbe.fr
-    email_to: contact@citation-et-proverbe.fr
+    email_to: formulaire@simplement-web.com
     email_bcc: []
     
   pager: 20
