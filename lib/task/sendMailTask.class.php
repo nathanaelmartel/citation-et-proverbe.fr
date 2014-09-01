@@ -54,6 +54,7 @@ EOF;
 	    
     $annonce = '<p>Retrouvez d\'autre citations sur <a href="http://www.citation-ou-proverbe.fr?pk_campaign=email&pk_kwd=email-footer" style="color:#000;">Citation ou Proverbe</a></p>';
   	$annonce = '<p>Découvrez <a href="http://revenudebase.info/?utm_source=citation-et-proverbe.fr&utm_medium=email&utm_campaign=citation-et-proverbe.fr" style="color:#000;">Le Revenu de base</a>, et vous, que feriez-vous si votre revenu était garanti ?</p>';
+  	$annonce = '<p>Accrochez des citations à vos murs avec <a href="http://www.wallshop.fr/fr/?pk_campaign=email-citation-et-proverbe&pk_kwd=email-footer-citation-et-proverbe" style="color:#000;">WallShop.fr</a></p>';
 	  
     $message_text = '<p>Bonjour, <br />Voici la citation du jour : </p>
 
