@@ -35,7 +35,11 @@ abstract class BaseCategoryExpressionFormFilter extends BaseFormFilterDoctrine
     parent::setup();
   }
 
-  public function addCitationsListColumnQuery(Doctrine_Query $query, $field, $values)
+  public function add
+Deprecated: preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead in /home/sshweb/www/citation-et-proverbe.fr/lib/vendor/symfony/lib/util/sfToolkit.class.php on line 362
+
+Deprecated: preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead in /home/sshweb/www/citation-et-proverbe.fr/lib/vendor/symfony/lib/util/sfToolkit.class.php on line 362
+CitationsListColumnQuery(Doctrine_Query $query, $field, $values)
   {
     if (!is_array($values))
     {

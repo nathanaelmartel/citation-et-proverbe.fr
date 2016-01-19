@@ -53,7 +53,11 @@ abstract class BaseCitationFormFilter extends BaseFormFilterDoctrine
     parent::setup();
   }
 
-  public function addWordsListColumnQuery(Doctrine_Query $query, $field, $values)
+  public function add
+Deprecated: preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead in /home/sshweb/www/citation-et-proverbe.fr/lib/vendor/symfony/lib/util/sfToolkit.class.php on line 362
+
+Deprecated: preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead in /home/sshweb/www/citation-et-proverbe.fr/lib/vendor/symfony/lib/util/sfToolkit.class.php on line 362
+WordsListColumnQuery(Doctrine_Query $query, $field, $values)
   {
     if (!is_array($values))
     {
@@ -71,7 +75,11 @@ abstract class BaseCitationFormFilter extends BaseFormFilterDoctrine
     ;
   }
 
-  public function addCategoriesExpressionListColumnQuery(Doctrine_Query $query, $field, $values)
+  public function add
+Deprecated: preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead in /home/sshweb/www/citation-et-proverbe.fr/lib/vendor/symfony/lib/util/sfToolkit.class.php on line 362
+
+Deprecated: preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead in /home/sshweb/www/citation-et-proverbe.fr/lib/vendor/symfony/lib/util/sfToolkit.class.php on line 362
+CategoriesExpressionListColumnQuery(Doctrine_Query $query, $field, $values)
   {
     if (!is_array($values))
     {
