@@ -11,7 +11,7 @@
       <a href="https://twitter.com/citation_fr" target="_blank" >Suivez nous sur Twitter</a>
       <a href="<?php echo url_for('@newsletter')?>" style="color: #000000;" >Recevoir une citation quotidienne par mail</a>
     </nav>
-    
+
   	<div class="search-form">
 	    <form action="<?php echo url_for('@recherche')?>" id="cse-search-box">
 			  <div>
@@ -22,5 +22,5 @@
 			    <input type="submit" name="sa" value="Rechercher" />
 			  </div>
 			</form>
-			<script type="text/javascript" src="http://www.google.fr/coop/cse/brand?form=cse-search-box&amp;lang=fr"></script>
+			<script type="text/javascript" src="https://www.google.fr/coop/cse/brand?form=cse-search-box&amp;lang=fr"></script>
 		</div>
