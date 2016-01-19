@@ -14,7 +14,7 @@ class newsletterActions extends sfActions
   {
     $this->form = new NewsletterForm();
   }
-  
+
 	public function executeCreate(sfWebRequest $request)
 	{
 		$this->forward404Unless($request->isMethod(sfRequest::POST));
@@ -70,15 +70,15 @@ class newsletterActions extends sfActions
 		$newsletter->is_confirmed = true;
    	$newsletter->last_send_at = new Doctrine_Expression('NOW()');
 		$newsletter->save();
-		
-		
+
+
 		if (!in_array(@$_SERVER['REMOTE_ADDR'], array('127.0.0.1', '::1')))
 		{
 			require_once sfConfig::get('sf_lib_dir').'/vendor/piwik/PiwikTracker.php';
-			PiwikTracker::$URL = 'http://piwik.fam-martel.eu/';
-		
+			PiwikTracker::$URL = 'https://piwik.simplement-web.com/';
+
 			$this->getUser()->setAttribute('mail', $contact->email);
-		
+
 			$piwikTracker = new PiwikTracker( $idSite = 5 );
 			$piwikTracker->setCustomVariable( 1, 'email', $email, 'visit');
 			$piwikTracker->setCustomVariable( 3, 'newsletter', 'inscrit', 'visit');
@@ -86,7 +86,7 @@ class newsletterActions extends sfActions
 			$piwikTracker->doTrackGoal($idGoal = 1, $revenue = 100);
 		}
 	}
-  
+
   public function executeDel(sfWebRequest $request)
   {
     $email = base64_decode($request->getParameter('code'));
@@ -97,8 +97,5 @@ class newsletterActions extends sfActions
     $newsletter->save();
     $newsletter->delete();
   }
-  
+
 }
-
-
-
