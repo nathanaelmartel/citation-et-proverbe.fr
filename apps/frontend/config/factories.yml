@@ -55,7 +55,7 @@ all:
 #          username:   citation@simplement-web.com
 #          password:   ere%erubezaj
           
-# Mandrill (mandrillapp.com) contact@citation-et-proverbe.fr // yzybapyte@yze  
+
   mailer:
     class: sfMailer
     param:
@@ -65,9 +65,9 @@ all:
       transport:
         class: Swift_SmtpTransport
         param:
-          host:       smtp.mandrillapp.com
+          host:       email-smtp.us-west-2.amazonaws.com
           port:       587
-          encryption: ~
-          username:   contact@citation-et-proverbe.fr
-          password:   SyBbz4AuBMR7ZZ2DFuVQnQ
+          encryption: tls
+          username:   AKIAJZ6Z5HJHLTA67VXA
+          password:   ArL1+8Cz1poWV0nBL4U1b0rC4hGG+8oVadr86UnVEIrw
            
